@@ -155,33 +155,6 @@ h1, h2, h3{
     background-color: var(--dark-color);
 }
 
-/* work */
-#work{
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('../images/peacock.jpg') center/cover no-repeat fixed;
-    color: var(--light-color);
-}
-#work .title h2, #work h3{
-    color: var(--light-color);
-}
-#work .title h2::after{
-    background: var(--light-color);
-}
-.work-bottom{
-    margin-top: 4rem;
-    text-align: center;
-}
-.work-bottom > div .icon img{
-    width: 50px;
-    margin: 0 auto 1.7rem auto;
-}
-/* portfolio */
-.portfolio-grid > div{
-    transition: var(--transition);
-}
-.portfolio-grid > div:hover{
-    transform: scale(0.9);
-}
-
 /* contact */
 #contact{
     background-color: rgba(223, 211, 211, 0.68);
@@ -225,28 +198,7 @@ h1, h2, h3{
     background-color: #000;
 }
 
-#insta{
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('../images/back.jpg') center/cover no-repeat fixed;
-    min-height: 65vh;
-}
-#insta .title h2{
-    color: var(--light-color);
-}
-#insta .title h2::after{
-    background-color: var(--light-color);
-}
-.insta-grid > div{
-    height: 400px;
-    overflow: hidden;
-    transition: var(--transition);
-}
-.insta-grid > div img{
-    height: 100%;
-    object-fit: cover;
-}
-.insta-grid > div:hover{
-    transform: scale(0.9);
-}
+
 
 /* footer */
 #footer{
@@ -350,14 +302,6 @@ h1, h2, h3{
     }
 }
 
-@media(min-width: 992px){
-    .insta-grid{
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .insta-grid > div{
-        height: 250px;
-    }
-}
 
 @media(min-width: 1200px){
     .portfolio-grid{
