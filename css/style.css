@@ -76,7 +76,7 @@ h1, h2, h3{
 
 /* header */
 #header{
-    background: url('apurbaghimire.com.np\images\ladokhamuji.jpg') center/cover no-repeat fixed;
+    background: url('images\ladokhamuji.jpg') center/cover no-repeat fixed;
     justify-content: flex-start;
     align-items: flex-end;
 }
