@@ -1,178 +1,2950 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Apurba Ghimire</title>
-		<!-- font awesome -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-			integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		/>
-		<link rel="stylesheet" href="style.css" />
-		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-	</head>
-	<body>
-		<!-- header -->
-		<header id="header" class="vh-100 flex">
-			<div class="container">
-				<div class="header-content">
-					<h1>
-						I'm a <br /><span
-							class="typewrite"
-							data-loop="yes"
-							data-speed="100"
-							data-delay="2000"
-							data-words='["Mechanical Engineering Student","photographer", "photo editor"]'
-						></span>
-					</h1>
-					<h3>Apurba Ghimire</h3>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apurba Ghimire — Photographer & Mechanical Engineering Student</title>
+<meta name="description" content="Photography portfolio of Apurba Ghimire — precision-crafted imagery with an engineer's eye. Available for portrait, landscape, and architectural photography.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════ */
+:root {
+  --black: #111010;
+  --steel-dark: #1e1e1e;
+  --steel: #2a2a2a;
+  --steel-light: #353535;
+  --steel-highlight: #464646;
+  --brass: #c8a96e;
+  --brass-dark: #a8893e;
+  --brass-light: #e2c88a;
+  --brass-sheen: #f0d89a;
+  --cream: #e8e0d0;
+  --cream-dim: #b0a898;
+  --blueprint: #4a7fa5;
+  --blueprint-dim: #2d5570;
+  --copper: #b87333;
+  --chrome: #d4d4d4;
+  --groove: rgba(0,0,0,0.6);
+  --shine: rgba(255,255,255,0.08);
+}
 
-					<ul class="social-links">
-						<li>
-							<a
-								href="https://facebook.com/apurba.ghimire.3"
-								class="flex"
-								target="_blank"
-							>
-								<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://twitter.com/ApurbaGhimire"
-								class="flex"
-								target="_blank"
-							>
-								<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.instagram.com/apurbye/"
-								class="flex"
-								target="_blank"
-							>
-								<i class="fab fa-instagram"></i>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.pinterest.com/apurbaghimire/"
-								class="flex"
-								target="_blank"
-							>
-								<i class="fab fa-pinterest"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</header>
-		<!-- end of header -->
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-		<!-- main content -->
-		<main>
-			<!-- about section -->
-			<section id="about" class="about py-7">
-				<div class="container">
-					<div class="about-content grid">
-						<div class="about-left">
-							<img src="images/profile.jpg" alt="" />
-						</div>
-						<div class="about-right">
-							<div class="title">
-								<h2>About Me</h2>
-							</div>
-			
-							<p class="lead">
-								Hi, I'm Apurba Ghimire, a dedicated student based in Nepal.
-								My passion lies in the world of photography, where I capture moments and transform them into visual stories through my lens.
-								 I find joy in both the art of capturing a perfect shot and the creative process of editing. 
-								Join me on my journey as I explore the beauty of Nepal and beyond, one click at a time.
-							</p>
-							<a href="#contact" class="btn-down">
-								<i class="fas fa-chevron-down"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- end of about section -->
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
 
-			
+/* Page wrapper receives exposure filter — cursors stay outside and unaffected */
+#page-wrap {
+  transition: filter 0.6s ease;
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════ */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--brass);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  position: fixed;
+  width: 34px; height: 34px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  opacity: 0.45;
+}
+.cursor-ring.expanded { width: 56px; height: 56px; opacity: 0.25; }
+.cursor-ring.spinning { border-style: dashed; animation: cursorSpin 1s linear infinite; }
+@keyframes cursorSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* ── CSS transitions for EV-driven changes ──
+   CSS custom property changes don't trigger `transition` on elements
+   using var(). Instead we set concrete values on :root and rely on
+   a short transition on the key visual properties that actually change. */
+:root {
+  transition:
+    --black 0.7s,
+    --cream 0.7s,
+    --brass 0.7s;
+}
+
+/* Elements that visibly change color — give them smooth transitions */
+body,
+.hero-name, .hero-tagline, .hero-eyebrow,
+.section-title, .section-label,
+.about-body, .spec-value, .spec-label, .spec-bar-fill,
+.contact-info-value, .contact-info-label,
+.gallery-title, .gallery-cat,
+.dial-label, .dial-value,
+.fader-label, .fader-value,
+.panel-label-strip,
+.ticker-item, .nav-logo {
+  transition: color 0.6s ease, background-color 0.6s ease, border-color 0.6s ease;
+}
+
+/* Background transitions */
+body, nav, footer,
+#about, #gallery section, #lab, #contact,
+.spec-card, .lab-card,
+.form-input, .form-textarea, .form-select {
+  transition: background-color 0.6s ease, background 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9997; opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════
+   SPLIT-ENTRY LANDING
+═══════════════════════════════════════════ */
+#entry-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;    /* always column — header on top, sides below */
+  background: #0a0909;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#entry-screen.exit {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Header band — sits in flow above door row, never overlaps */
+.entry-header {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 1.4rem 1.5rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,7,7,0.97) 70%, transparent 100%);
+}
+.entry-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5.5vw, 4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #e8dece;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow: 0 2px 24px rgba(0,0,0,1);
+  display: block;
+}
+.entry-header-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(176,168,152,0.5);
+  margin-top: 0.45rem;
+  display: block;
+}
+
+/* Doors row — fills remaining height, side by side */
+.entry-doors {
+  flex: 1 1 0;
+  display: flex;
+  min-height: 0;
+  position: relative; /* anchor for .entry-divider absolute positioning */
+  overflow: hidden;   /* clip door arches that protrude upward */
+}
+
+/* Divider — vertical between doors, inset from edges so it never intersects content */
+.entry-divider {
+  position: absolute;
+  left: 50%;
+  top: 8%; bottom: 6%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(200,169,110,0.5) 20%, rgba(200,169,110,0.7) 50%, rgba(200,169,110,0.5) 80%, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+.entry-divider::before, .entry-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  width: 6px; height: 6px;
+  background: #c8a96e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(200,169,110,0.8);
+}
+.entry-divider::before { top: 0; }
+.entry-divider::after  { bottom: 0; }
+
+/* Each side — fills half the door strip */
+.entry-side {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: none;
+  transition: flex 0.5s ease;
+  padding: 1rem 0.75rem 1.25rem;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.entry-side:hover { flex: 1.15; }
+
+.entry-side-bg {
+  position: absolute; inset: 0;
+  transition: opacity 0.4s;
+  opacity: 0.4;
+}
+.entry-side.photo    .entry-side-bg { background: radial-gradient(ellipse at 50% 60%, rgba(200,169,110,0.28) 0%, transparent 70%); }
+.entry-side.engineer .entry-side-bg { background: radial-gradient(ellipse at 50% 60%, rgba(74,127,165,0.25) 0%, transparent 70%); }
+.entry-side:hover .entry-side-bg { opacity: 1; }
+
+/* The Doors — fluid sizing using min() so they never overflow */
+.door-wrap {
+  position: relative;
+  width: min(148px, 34vw);
+  height: min(240px, 40vh);
+  flex-shrink: 0;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.7));
+}
+
+/* Door frame — outer architrave */
+.door-frame {
+  position: absolute; inset: 0;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(135deg, #3a3020 0%, #241c10 40%, #1a1408 100%);
+  box-shadow:
+    inset 0 0 0 3px rgba(200,169,110,0.15),
+    inset 3px 3px 8px rgba(0,0,0,0.8),
+    inset -3px -3px 8px rgba(255,255,255,0.04),
+    0 8px 32px rgba(0,0,0,0.6),
+    0 2px 0 rgba(200,169,110,0.2);
+}
+
+/* Arched top for photo door — clipped by .entry-doors overflow:hidden */
+.door-arch {
+  position: absolute;
+  top: -28px; left: 50%; transform: translateX(-50%);
+  width: 92px; height: 56px;
+  border-radius: 46px 46px 0 0;
+  background: linear-gradient(135deg, #3a3020, #241c10);
+  box-shadow: inset 0 0 0 3px rgba(200,169,110,0.15), 0 -4px 12px rgba(0,0,0,0.4);
+}
+.door-arch::after {
+  content: '';
+  position: absolute;
+  inset: 6px 6px 0;
+  border-radius: 40px 40px 0 0;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(200,169,110,0.08);
+}
+
+/* Door panel inner inset */
+.door-panel {
+  position: absolute;
+  inset: 12px;
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  transition: all 0.35s;
+}
+
+/* Door icon — scales with door */
+.door-icon {
+  width: min(44px, 30%);
+  height: min(44px, 30%);
+  opacity: 0.75;
+  transition: opacity 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+.entry-side:hover .door-icon { opacity: 1; transform: scale(1.06); }
+.entry-side.photo .door-panel {
+  background: linear-gradient(160deg, #1a1510 0%, #120f08 100%);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(200,169,110,0.08);
+}
+.entry-side.engineer .door-panel {
+  background: linear-gradient(160deg, #0e1520 0%, #080f1a 100%);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(74,127,165,0.1);
+}
+.entry-side:hover .door-panel {
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(200,169,110,0.2),
+    inset 0 0 40px rgba(200,169,110,0.04);
+}
+.entry-side.engineer:hover .door-panel {
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(74,127,165,0.25),
+    inset 0 0 40px rgba(74,127,165,0.05);
+}
+
+/* Panel recessed rectangle details */
+.door-panel::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(200,169,110,0.07);
+  border-radius: 1px;
+  pointer-events: none;
+}
+.entry-side.engineer .door-panel::before {
+  border-color: rgba(74,127,165,0.1);
+}
+
+/* Door knocker / handle */
+.door-knocker {
+  position: absolute;
+  bottom: 24px;
+  left: 50%; transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.knocker-plate {
+  width: 32px; height: 22px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #5a4820, #3a2e10, #4a3a18);
+  box-shadow:
+    inset 0 2px 3px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 2px 6px rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.knocker-ring {
+  width: 16px; height: 10px;
+  border: 2px solid var(--brass);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform-origin: top center;
+  transition: transform 0.2s;
+}
+.door-wrap:hover .knocker-ring { transform: rotate(-20deg); }
+
+/* Door keyhole */
+.door-keyhole {
+  position: absolute;
+  right: 22px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 20px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0;
+}
+.keyhole-circle {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(200,169,110,0.3);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,1), 0 0 4px rgba(200,169,110,0.1);
+}
+.keyhole-slot {
+  width: 5px; height: 8px;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(200,169,110,0.25);
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,1);
+}
+
+/* door-icon defined in door-panel block above */
+
+/* Door label — inside narrow door panel */
+.door-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(0.55rem, 1.8vw, 0.82rem);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.entry-side.photo    .door-label { color: #f0d898; }
+.entry-side.engineer .door-label { color: #a8d4f0; }
+.entry-side:hover .door-label { opacity: 1; }
+
+/* Entry content below door */
+.entry-content {
+  text-align: center;
+  padding: 0 0.4rem;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+.entry-question {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(200,180,140,0.65);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.entry-answer {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 3.2vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.15;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.9);
+  /* Allow natural line breaks but never overflow */
+  overflow-wrap: break-word;
+}
+.entry-side.photo    .entry-answer { color: #f0d898; }
+.entry-side.engineer .entry-answer { color: #a8d4f0; }
+
+.entry-sub {
+  font-size: 0.48rem;
+  letter-spacing: 0.06em;
+  margin-top: 0.3rem;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.entry-side.photo    .entry-sub { color: rgba(240,216,152,0.65); }
+.entry-side.engineer .entry-sub { color: rgba(168,212,240,0.65); }
+.entry-side:hover .entry-sub { opacity: 1; transform: translateY(0); }
+
+/* Enter button */
+.entry-enter-btn {
+  margin-top: 0.8rem;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 2px;
+  cursor: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s 0.05s, transform 0.3s 0.05s, box-shadow 0.2s, top 0.15s;
+  position: relative;
+  top: 0;
+  white-space: nowrap;
+}
+/* Desktop pointer: reveal on hover */
+@media (hover: hover) and (pointer: fine) {
+  .entry-side:hover .entry-enter-btn { opacity: 1; transform: translateY(0); }
+}
+/* Touch / no-hover: always visible */
+@media (hover: none), (pointer: coarse) {
+  .entry-enter-btn { opacity: 1; transform: translateY(0); }
+}
+
+.entry-side.photo .entry-enter-btn {
+  background: linear-gradient(135deg, var(--brass-light), var(--brass));
+  color: var(--black);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 16px rgba(200,169,110,0.4);
+}
+.entry-side.photo .entry-enter-btn:hover {
+  top: -2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 24px rgba(200,169,110,0.5);
+}
+.entry-side.photo .entry-enter-btn:active {
+  top: 1px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 6px rgba(200,169,110,0.2);
+}
+
+.entry-side.engineer .entry-enter-btn {
+  background: linear-gradient(135deg, #6aafd4, var(--blueprint));
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 16px rgba(74,127,165,0.4);
+}
+.entry-side.engineer .entry-enter-btn:hover {
+  top: -2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(74,127,165,0.5);
+}
+.entry-side.engineer .entry-enter-btn:active {
+  top: 1px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 6px rgba(74,127,165,0.2);
+}
+
+/* (entry-header defined above in the landing block) */
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 3rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(17,16,16,0.98) 0%, rgba(17,16,16,0.88) 100%);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(200,169,110,0.13);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03), 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.35rem;
+  letter-spacing: 0.15em;
+  color: var(--brass);
+  text-decoration: none;
+  position: relative;
+}
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--brass), transparent);
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--brass);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--brass); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── Nav Mode Badge ── */
+.nav-mode-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s;
+}
+.nav-mode-badge.photo-mode {
+  background: rgba(200,169,110,0.12);
+  border: 1px solid rgba(200,169,110,0.3);
+  color: var(--brass);
+}
+.nav-mode-badge.engineer-mode {
+  background: rgba(74,127,165,0.12);
+  border: 1px solid rgba(74,127,165,0.3);
+  color: var(--blueprint);
+}
+.nav-mode-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  animation: badgePulse 2s infinite;
+}
+.photo-mode .nav-mode-dot { background: var(--brass); }
+.engineer-mode .nav-mode-dot { background: var(--blueprint); }
+@keyframes badgePulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Nav CTA button */
+.nav-cta {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--black) !important;
+  background: linear-gradient(135deg, var(--brass-light), var(--brass));
+  padding: 0.48rem 1.2rem;
+  border-radius: 2px;
+  transition: box-shadow 0.2s, top 0.15s !important;
+  box-shadow: 0 2px 8px rgba(200,169,110,0.3), inset 0 1px 0 rgba(255,255,255,0.22);
+  position: relative; top: 0;
+}
+.nav-cta:hover {
+  top: -1px !important;
+  box-shadow: 0 5px 16px rgba(200,169,110,0.5), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+}
+.nav-cta:active { top: 1px !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4) !important; }
+.nav-cta::after { display: none !important; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: none; background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 1px;
+  background: var(--brass);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+.mobile-nav {
+  display: none; position: fixed; inset: 0;
+  background: rgba(17,16,16,0.98);
+  z-index: 99; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2.5rem; backdrop-filter: blur(20px);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: 'Bebas Neue', cursive; font-size: 2.5rem;
+  letter-spacing: 0.1em; color: var(--cream-dim); text-decoration: none; transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--brass); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  position: relative;
+  height: 100vh; min-height: 600px;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(200,169,110,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(74,127,165,0.04) 0%, transparent 50%),
+    linear-gradient(135deg, #0d0d0d 0%, #1a1918 40%, #0f0f0f 100%);
+  transition: background 0.8s;
+}
+
+.hero-bg.engineer-bg {
+  background:
+    radial-gradient(ellipse at 70% 60%, rgba(74,127,165,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 30%, rgba(200,169,110,0.04) 0%, transparent 50%),
+    linear-gradient(135deg, #090d12 0%, #0f151e 40%, #0a0c10 100%);
+}
+
+.aperture {
+  position: absolute; right: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 560px; height: 560px; opacity: 0.07;
+}
+.aperture-blade {
+  position: absolute; top: 50%; left: 50%;
+  width: 50%; height: 4px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  transform-origin: left center;
+  border-radius: 2px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 3rem;
+  max-width: 800px;
+  animation: heroReveal 1.2s ease-out forwards;
+  opacity: 0;
+}
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--brass); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: color 0.5s;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 36px; height: 1px;
+  background: var(--brass);
+  transition: background 0.5s;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+  font-weight: 300; line-height: 0.95;
+  color: var(--cream); margin-bottom: 1.5rem;
+  transition: all 0.5s;
+}
+.hero-name em { font-style: italic; color: var(--brass); transition: color 0.5s; }
+
+.hero-tagline {
+  font-size: clamp(0.68rem, 1.5vw, 0.82rem); font-weight: 300;
+  letter-spacing: 0.1em; color: var(--cream-dim); line-height: 1.9;
+  max-width: 460px; margin-bottom: 2.5rem;
+  border-left: 2px solid var(--brass-dark);
+  padding-left: 1.2rem;
+  transition: border-color 0.5s;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ═══════════════════════════════════════════
+   SKEUOMORPHIC BUTTON SYSTEM
+═══════════════════════════════════════════ */
+
+/* Primary brass push button */
+.btn-primary {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.88rem; letter-spacing: 0.22em;
+  color: #1a1000;
+  background: linear-gradient(180deg, var(--brass-sheen) 0%, var(--brass-light) 30%, var(--brass) 70%, var(--brass-dark) 100%);
+  border: none;
+  padding: 0.9rem 2.4rem;
+  border-radius: 3px;
+  cursor: none; text-decoration: none; display: inline-block;
+  position: relative; top: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    inset 1px 0 0 rgba(255,255,255,0.1),
+    inset -1px 0 0 rgba(0,0,0,0.15),
+    0 4px 0 #6b5520,
+    0 5px 12px rgba(0,0,0,0.5),
+    0 8px 24px rgba(200,169,110,0.25);
+  transition: top 0.1s, box-shadow 0.1s;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-primary:hover {
+  top: -2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 6px 0 #6b5520,
+    0 8px 20px rgba(0,0,0,0.6),
+    0 12px 32px rgba(200,169,110,0.3);
+}
+.btn-primary:active {
+  top: 3px;
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(0,0,0,0.4),
+    0 1px 0 #6b5520,
+    0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Secondary steel outline button */
+.btn-secondary {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.88rem; letter-spacing: 0.22em;
+  color: var(--cream-dim);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(200,169,110,0.28);
+  padding: 0.9rem 2.4rem;
+  border-radius: 3px;
+  cursor: none; text-decoration: none; display: inline-block;
+  position: relative; top: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 3px 0 rgba(0,0,0,0.5),
+    0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.15s;
+}
+.btn-secondary:hover {
+  border-color: rgba(200,169,110,0.6);
+  color: var(--brass);
+  top: -2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 5px 0 rgba(0,0,0,0.5),
+    0 8px 16px rgba(0,0,0,0.4),
+    0 0 12px rgba(200,169,110,0.08);
+}
+.btn-secondary:active {
+  top: 2px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* Blueprint blue button (engineer mode) */
+.btn-blueprint {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.88rem; letter-spacing: 0.22em;
+  color: #fff;
+  background: linear-gradient(180deg, #6ab8de 0%, #4a9ec8 30%, var(--blueprint) 70%, #2d5f82 100%);
+  border: none;
+  padding: 0.9rem 2.4rem;
+  border-radius: 3px;
+  cursor: none; text-decoration: none; display: inline-block;
+  position: relative; top: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 4px 0 #1a3a52,
+    0 5px 12px rgba(0,0,0,0.5),
+    0 8px 24px rgba(74,127,165,0.25);
+  transition: top 0.1s, box-shadow 0.1s;
+}
+.btn-blueprint:hover { top: -2px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 6px 0 #1a3a52, 0 8px 20px rgba(0,0,0,0.5), 0 12px 28px rgba(74,127,165,0.3); }
+.btn-blueprint:active { top: 3px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 1px 0 #1a3a52; }
+
+/* Toggle switch */
+.toggle-wrap {
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.toggle-label {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-dim);
+}
+.toggle-switch {
+  position: relative; width: 52px; height: 26px;
+  cursor: none;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0;
+  border-radius: 13px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.7),
+    inset 0 1px 2px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,0,0,0.5);
+  transition: all 0.3s;
+}
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  left: 3px; top: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.3s, background 0.3s;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(180deg, #1a3a2a 0%, #2a5a3a 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.5),
+    0 0 8px rgba(100,200,130,0.2),
+    0 1px 0 rgba(255,255,255,0.06);
+}
+.toggle-switch input:checked + .toggle-slider::after {
+  transform: translateX(26px);
+  background: linear-gradient(135deg, #80d4a0 0%, #40a060 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 6px rgba(80,200,120,0.4);
+}
+
+/* ═══════════════════════════════════════════
+   SPIN DIALS PANEL
+═══════════════════════════════════════════ */
+.dials-panel {
+  position: absolute;
+  right: 3rem; bottom: 3rem;
+  display: flex; gap: 2rem;
+  z-index: 10;
+  animation: heroReveal 1.5s 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* ── Dial responsive size token ── */
+:root {
+  --dial-size: 72px;
+}
+@media (max-width: 900px)  { :root { --dial-size: 62px; } }
+@media (max-width: 600px)  { :root { --dial-size: 52px; } }
+@media (max-width: 400px)  { :root { --dial-size: 44px; } }
+
+/* Individual dial */
+.dial-unit {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.dial-label {
+  font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--cream-dim); text-align: center; line-height: 1.3;
+}
+.dial-value {
+  font-family: 'Bebas Neue', cursive; font-size: 0.72rem; letter-spacing: 0.1em;
+  color: var(--brass); transition: color 0.4s;
+  min-width: 4ch; text-align: center;
+}
+
+.dial {
+  position: relative;
+  width: var(--dial-size);
+  height: var(--dial-size);
+  cursor: none;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* ── Dial idle spin ── */
+@keyframes dialIdleSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* The outer knurled ring spins continuously.
+   Duration is set per-dial via --spin-dur inline style. */
+.dial-outer {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+    #3a3a3a 0deg, #505050 20deg, #2a2a2a 40deg, #484848 60deg,
+    #3a3a3a 80deg, #505050 100deg, #2a2a2a 120deg, #484848 140deg,
+    #3a3a3a 160deg, #505050 180deg, #2a2a2a 200deg, #484848 220deg,
+    #3a3a3a 240deg, #505050 260deg, #2a2a2a 280deg, #484848 300deg,
+    #3a3a3a 320deg, #505050 340deg, #2a2a2a 360deg
+  );
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.7),
+    0 2px 4px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 0 0 1px rgba(0,0,0,0.5);
+  animation: dialIdleSpin var(--spin-dur, 24s) var(--spin-dir, normal) linear infinite;
+}
+.dial-outer::after {
+  content: '';
+  position: absolute; inset: 3px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* Inner recessed hub — the face the needle sits on */
+.dial-inner {
+  position: absolute;
+  inset: 13%;          /* ~9px on 72px dial, scales with dial */
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2e2e2e 0%, #1a1a1a 40%, #252525 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.8),
+    inset 0 1px 2px rgba(0,0,0,0.6),
+    inset 0 -1px 0 rgba(255,255,255,0.04),
+    0 1px 0 rgba(255,255,255,0.06);
+  /* Needed for positioning children */
+  position: absolute;
+  overflow: visible;
+}
+
+/*
+  ── NEEDLE / HAND — correct pivot math ──
+  The needle must pivot around the exact centre of the dial-inner circle.
+  Strategy:
+    • Position the needle's left edge at 50% of dial-inner (horizontal centre).
+    • Shift left by half its own width so its centreline aligns.
+    • Position its BOTTOM at 50% of dial-inner (vertical centre).
+    • transform-origin: 50% 100% — pivots from bottom-centre of the element.
+    • rotate() then sweeps the tip around the centre point.
+*/
+.dial-indicator {
+  position: absolute;
+  /* Horizontal: centre of parent */
+  left: 50%;
+  /* Vertical: bottom edge sits exactly at parent's centre */
+  top: 50%;
+  /* Needle is 28% of the inner circle in height, 2px wide */
+  width: 2px;
+  height: 36%;
+  /* Pull left by 1px (half of 2px width) to perfectly centre the line */
+  margin-left: -1px;
+  /* Pull up so the bottom of the needle sits at the 50% mark */
+  /* translateY(-100%) moves the whole element UP so bottom=origin */
+  transform: translateX(0) translateY(-100%) rotate(0deg);
+  transform-origin: 50% 100%;   /* pivot = bottom-centre of needle */
+  background: linear-gradient(to top, rgba(200,169,110,0.15), var(--brass) 60%, var(--brass-sheen));
+  border-radius: 1px 1px 0 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgba(200,169,110,0.7));
+  /* Small dot at pivot point */
+}
+.dial-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 50%;
+  transform: translateX(-50%);
+  width: 5px; height: 5px;
+  background: var(--brass);
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(200,169,110,0.8);
+}
+
+/* Brass accent ring */
+.dial-accent-ring {
+  position: absolute; inset: 6%;
+  border-radius: 50%;
+  border: 1px solid rgba(200,169,110,0.22);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION COMMON — unified spacing system
+═══════════════════════════════════════════ */
+section { padding: 7rem 0; }
+
+/* Every section's direct content sits inside a .section-inner
+   with the same horizontal inset and max-width. This ensures
+   section labels, titles, grids all share the same left edge. */
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+@media (max-width: 1024px) { .section-inner { padding: 0 2rem; } }
+@media (max-width: 768px)  { .section-inner { padding: 0 1.5rem; } }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--brass); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after {
+  content: ''; flex: 1; max-width: 56px; height: 1px; background: var(--brass-dark);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 2rem;
+}
+.section-title em { font-style: italic; color: var(--brass); }
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about {
+  background: linear-gradient(135deg, var(--steel-dark) 0%, var(--black) 100%);
+  position: relative; overflow: hidden;
+}
+#about::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,169,110,0.3), transparent);
+}
+#about::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(74,127,165,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,127,165,0.035) 1px, transparent 1px);
+  background-size: 44px 44px; pointer-events: none;
+}
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start; position: relative; z-index: 1;
+}
+
+.about-body {
+  font-size: 0.82rem; line-height: 2; color: var(--cream-dim); margin-bottom: 1.5rem;
+}
+.about-body strong { color: var(--cream); font-weight: 400; }
+
+/* Persona toggle — tactile */
+.persona-toggle {
+  display: flex;
+  background: linear-gradient(180deg, #1a1a1a, #222);
+  border-radius: 4px; padding: 4px; margin-bottom: 2rem;
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.7),
+    inset 0 1px 3px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.04);
+  width: fit-content;
+  border: 1px solid rgba(0,0,0,0.4);
+}
+.persona-btn {
+  font-family: 'Bebas Neue', cursive; font-size: 0.8rem; letter-spacing: 0.15em;
+  padding: 0.6rem 1.6rem; border: none;
+  background: transparent; color: var(--cream-dim);
+  cursor: none; border-radius: 3px; transition: all 0.25s;
+  position: relative;
+}
+.persona-btn.active {
+  background: linear-gradient(180deg, var(--brass-sheen) 0%, var(--brass-light) 30%, var(--brass) 80%);
+  color: #1a1000;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.2),
+    0 2px 8px rgba(200,169,110,0.4);
+}
+
+.persona-content { display: none; }
+.persona-content.active { display: block; }
+
+/* About right specs */
+.about-right { display: flex; flex-direction: column; gap: 1.4rem; }
+
+.spec-card {
+  background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%);
+  border: 1px solid rgba(200,169,110,0.1); border-radius: 4px; padding: 1.4rem;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 16px rgba(0,0,0,0.4);
+}
+.spec-card::before {
+  content: ''; position: absolute; top: -1px; left: 1.5rem; right: 1.5rem; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,169,110,0.35), transparent);
+}
+
+.spec-label {
+  font-size: 0.57rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--brass); margin-bottom: 0.4rem;
+}
+.spec-value {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  color: var(--cream); font-weight: 300;
+}
+.spec-bar {
+  margin-top: 0.75rem; height: 3px;
+  background: linear-gradient(180deg, #1a1a1a, #222);
+  border-radius: 2px; overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
+}
+.spec-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brass-dark), var(--brass-light));
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(200,169,110,0.4);
+  transition: width 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0;
+}
+
+/* ── About Controls Panel ── */
+.about-controls {
+  background: linear-gradient(135deg, #1e1e1e, #161616);
+  border: 1px solid rgba(200,169,110,0.1);
+  border-radius: 4px; padding: 1.4rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 16px rgba(0,0,0,0.4);
+}
+.controls-label {
+  font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--cream-dim); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.controls-label::after { content: ''; flex: 1; height: 1px; background: rgba(200,169,110,0.15); }
+
+.controls-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.controls-row:last-child { border-bottom: none; }
+
+/* Indicator LED */
+.led {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #6dff8a, #00aa44);
+  box-shadow: 0 0 6px rgba(0,220,80,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+  animation: ledBlink 3s ease-in-out infinite;
+}
+.led.amber {
+  background: radial-gradient(circle at 35% 35%, var(--brass-light), var(--brass-dark));
+  box-shadow: 0 0 6px rgba(200,169,110,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+  animation-delay: 1s;
+}
+.led.blue {
+  background: radial-gradient(circle at 35% 35%, #80c0e0, var(--blueprint));
+  box-shadow: 0 0 6px rgba(74,127,165,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+  animation-delay: 0.5s;
+}
+@keyframes ledBlink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.3; }
+}
+
+/* Mini push buttons for controls panel */
+.mini-btn {
+  font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--cream-dim);
+  background: linear-gradient(180deg, #3a3a3a, #2a2a2a);
+  border: 1px solid rgba(0,0,0,0.5); border-radius: 2px;
+  padding: 0.3rem 0.7rem; cursor: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 2px 0 rgba(0,0,0,0.5),
+    0 3px 6px rgba(0,0,0,0.3);
+  position: relative; top: 0; transition: top 0.08s, box-shadow 0.08s;
+}
+.mini-btn:hover { color: var(--brass); border-color: rgba(200,169,110,0.3); }
+.mini-btn:active { top: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 0 rgba(0,0,0,0.5); }
+
+/* ═══════════════════════════════════════════
+   TICKER
+═══════════════════════════════════════════ */
+.ticker-wrap {
+  background: var(--steel-dark); padding: 1rem 0; overflow: hidden; position: relative;
+  border-top: 1px solid rgba(200,169,110,0.08);
+  border-bottom: 1px solid rgba(200,169,110,0.08);
+}
+.ticker-wrap::before, .ticker-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+}
+.ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--steel-dark), transparent); }
+.ticker-wrap::after { right: 0; background: linear-gradient(-90deg, var(--steel-dark), transparent); }
+
+.ticker {
+  display: flex; animation: ticker 32s linear infinite; white-space: nowrap;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 1.2rem; padding: 0 1.8rem;
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cream-dim);
+}
+.ticker-dot { width: 4px; height: 4px; background: var(--brass); border-radius: 50%; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════════ */
+#gallery { background: var(--black); }
+
+/* ─── GALLERY ─── */
+#gallery { padding: 7rem 0; }
+
+.gallery-header {
+  max-width: 1100px; margin: 0 auto 2.5rem;
+  padding: 0 3rem;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+
+.gallery-filters { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+
+.filter-btn {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--cream-dim);
+  background: linear-gradient(180deg, #303030, #252525);
+  border: 1px solid rgba(0,0,0,0.5);
+  padding: 0.48rem 1rem; border-radius: 2px; cursor: none;
+  position: relative; top: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 2px 0 rgba(0,0,0,0.5), 0 3px 8px rgba(0,0,0,0.35);
+  transition: color 0.15s, top 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.filter-btn.active {
+  background: linear-gradient(180deg, var(--brass-light) 0%, var(--brass) 60%, var(--brass-dark) 100%);
+  color: #1a1000; border-color: rgba(168,137,62,0.6);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.35), inset 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(0,0,0,0.4);
+  top: 1px;
+}
+.filter-btn:hover:not(.active) { color: var(--brass); top: -1px; border-color: rgba(200,169,110,0.3); }
+.filter-btn:active:not(.active) { top: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 0 rgba(0,0,0,0.5); }
+
+/* Grid — 3 cols, explicit row height so cells NEVER stretch */
+.gallery-grid {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 260px;
+  gap: 8px;
+}
+
+/* Masonry spans — desktop only */
+@media (min-width: 1025px) {
+  .gallery-item:nth-child(1) { grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-item:nth-child(7) { grid-row: span 2; }
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--steel);
+  cursor: none;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* No height/min-height — grid-auto-rows controls this */
+}
+.gallery-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 38px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,169,110,0.2);
+}
+
+/* Every child of .gallery-item fills it completely */
+.gallery-img,
+.photo-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s, filter 0.3s;
+  filter: saturate(0.8) brightness(0.88);
+}
+.gallery-item:hover .gallery-img { transform: scale(1.04); filter: saturate(1) brightness(1); }
+
+.photo-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 1.4rem;
+  z-index: 2;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: var(--cream); margin-bottom: 0.2rem; }
+.gallery-cat { font-size: 0.56rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--brass); }
+
+/* Placeholder scene colours */
+.ph-1 { background: linear-gradient(135deg, #1a1f2e 0%, #2d3548 40%, #1a2030 100%); }
+.ph-2 { background: linear-gradient(135deg, #1e1a14 0%, #3a2e1f 40%, #2a1f10 100%); }
+.ph-3 { background: linear-gradient(135deg, #141e1a 0%, #1f3a2e 40%, #102a20 100%); }
+.ph-4 { background: linear-gradient(135deg, #1e1414 0%, #3a1f1f 40%, #2a1010 100%); }
+.ph-5 { background: linear-gradient(135deg, #1a1a1e 0%, #2e2d3a 40%, #1a1a30 100%); }
+.ph-6 { background: linear-gradient(135deg, #1e1c14 0%, #3a3520 40%, #2a2810 100%); }
+.ph-7 { background: linear-gradient(135deg, #141a1e 0%, #1f2d3a 40%, #102030 100%); }
+.ph-8 { background: linear-gradient(135deg, #1a1e14 0%, #2e3a1f 40%, #202a10 100%); }
+.ph-9 { background: linear-gradient(135deg, #1e141e 0%, #3a1f3a 40%, #2a102a 100%); }
+.scene-city::before    { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: repeating-linear-gradient(90deg, transparent 0px, transparent 18px, rgba(200,169,110,0.05) 18px, rgba(200,169,110,0.05) 20px), linear-gradient(to top, rgba(200,169,110,0.08), transparent); }
+.scene-portrait::before{ content: ''; position: absolute; inset: 15%; border-radius: 50%; background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%); border: 1px solid rgba(200,169,110,0.08); }
+.scene-landscape::before{ content: ''; position: absolute; bottom: 32%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,169,110,0.25), transparent); }
+.scene-arch::before    { content: ''; position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 40%; height: 50%; border: 1px solid rgba(200,169,110,0.12); border-radius: 50% 50% 0 0; }
+
+/* Responsive gallery */
+@media (max-width: 1024px) {
+  .gallery-header { padding: 0 2rem; }
+  .gallery-grid   { padding: 0 2rem; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+}
+@media (max-width: 768px) {
+  .gallery-header { padding: 0 1.5rem; }
+  .gallery-grid   { padding: 0 1.5rem; grid-template-columns: 1fr; grid-auto-rows: 240px; }
+}
+
+/* ═══════════════════════════════════════════
+   THE LAB
+═══════════════════════════════════════════ */
+#lab {
+  background: linear-gradient(135deg, var(--steel-dark) 0%, #141414 100%);
+  position: relative; overflow: hidden;
+}
+#lab::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(74,127,165,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,127,165,0.05) 1px, transparent 1px),
+    linear-gradient(rgba(74,127,165,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,127,165,0.02) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  pointer-events: none;
+}
+
+.lab-content { position: relative; z-index: 1; }
+
+.lab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3rem; }
+
+.lab-card {
+  background: linear-gradient(160deg, #272727 0%, #1d1d1d 100%);
+  border: 1px solid rgba(74,127,165,0.18); border-radius: 4px; padding: 1.8rem;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.lab-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,127,165,0.3); }
+.lab-card::before { content: attr(data-num); position: absolute; top: 1.2rem; right: 1.2rem; font-family: 'Bebas Neue', cursive; font-size: 2.8rem; color: rgba(74,127,165,0.1); line-height: 1; }
+
+.lab-icon { width: 38px; height: 38px; margin-bottom: 1rem; }
+.lab-icon svg { width: 100%; height: 100%; }
+.lab-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; color: var(--cream); margin-bottom: 0.65rem; }
+.lab-card-text { font-size: 0.73rem; line-height: 1.9; color: var(--cream-dim); }
+.lab-equation { margin-top: 1rem; padding: 0.7rem; background: rgba(74,127,165,0.07); border: 1px solid rgba(74,127,165,0.14); border-radius: 3px; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--blueprint); font-style: italic; }
+
+/* ── Lab control panel ── */
+.lab-controls-panel {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, #1e1e1e, #161616);
+  border: 1px solid rgba(74,127,165,0.2);
+  border-radius: 6px; padding: 2rem 2.5rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.panel-label-strip {
+  font-family: 'Bebas Neue', cursive; font-size: 0.75rem; letter-spacing: 0.3em;
+  color: rgba(74,127,165,0.6); margin-bottom: 1.8rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.panel-label-strip::after { content: ''; flex: 1; height: 1px; background: rgba(74,127,165,0.15); }
+
+/* Panel body — dials left, controls right, wrap on narrow */
+.panel-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+/* Dials row — wraps to 2×2 grid on small screens */
+.lab-dials-row {
+  display: grid;
+  grid-template-columns: repeat(4, var(--dial-size));
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  justify-items: center;
+}
+@media (max-width: 700px) {
+  .lab-dials-row {
+    grid-template-columns: repeat(2, var(--dial-size));
+  }
+  .panel-body { gap: 1.5rem; }
+  .lab-controls-panel { padding: 1.5rem; }
+}
+
+/* Inline slider — styled as analog fader */
+.fader-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.fader-label { font-size: 0.52rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cream-dim); }
+.fader-value { font-family: 'Bebas Neue', cursive; font-size: 0.7rem; color: var(--blueprint); }
+
+.fader {
+  -webkit-appearance: none; appearance: none;
+  width: 120px; height: 4px; border-radius: 2px; cursor: none; outline: none;
+  background: linear-gradient(90deg, var(--blueprint) 0%, var(--blueprint) var(--pct, 50%), #2a2a2a var(--pct, 50%), #2a2a2a 100%);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
+}
+.fader::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.7),
+    0 1px 0 rgba(255,255,255,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 0 0 2px rgba(74,127,165,0.3);
+  cursor: none;
+  transition: box-shadow 0.2s;
+}
+.fader::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 0 0 3px rgba(74,127,165,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.fader::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%; border: none;
+  background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 0 0 2px rgba(74,127,165,0.3);
+  cursor: none;
+}
+
+/* Panel action buttons row */
+.panel-buttons {
+  display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center;
+}
+
+/* Chunky panel button */
+.panel-btn {
+  font-family: 'Bebas Neue', cursive; font-size: 0.75rem; letter-spacing: 0.2em;
+  border: none; border-radius: 3px; padding: 0.7rem 1.4rem; cursor: none;
+  position: relative; top: 0;
+  transition: top 0.1s, box-shadow 0.1s;
+}
+.panel-btn-brass {
+  background: linear-gradient(180deg, var(--brass-light) 0%, var(--brass) 60%, var(--brass-dark) 100%);
+  color: #1a1000;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 3px 0 #6b5520, 0 4px 10px rgba(0,0,0,0.5), 0 6px 18px rgba(200,169,110,0.2);
+}
+.panel-btn-brass:hover { top: -1px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 0 #6b5520, 0 6px 14px rgba(0,0,0,0.5), 0 10px 22px rgba(200,169,110,0.25); }
+.panel-btn-brass:active { top: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 1px 0 #6b5520; }
+
+.panel-btn-steel {
+  background: linear-gradient(180deg, #444 0%, #303030 60%, #252525 100%);
+  color: var(--cream-dim);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 3px 0 #111, 0 4px 10px rgba(0,0,0,0.5);
+}
+.panel-btn-steel:hover { top: -1px; color: var(--cream); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 4px 0 #111, 0 6px 14px rgba(0,0,0,0.5); }
+.panel-btn-steel:active { top: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.6), 0 1px 0 #111; }
+
+.panel-btn-red {
+  background: linear-gradient(180deg, #e05050 0%, #c03030 60%, #962020 100%);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 3px 0 #5a1010, 0 4px 10px rgba(0,0,0,0.5), 0 6px 16px rgba(200,50,50,0.2);
+}
+.panel-btn-red:hover { top: -1px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 0 #5a1010, 0 8px 20px rgba(200,50,50,0.3); }
+.panel-btn-red:active { top: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 1px 0 #5a1010; }
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact {
+  background: var(--black); position: relative; overflow: hidden;
+}
+#contact::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,169,110,0.3), transparent);
+}
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 5rem; align-items: start;
+}
+
+.contact-info-item {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 1.1rem 0; border-bottom: 1px solid rgba(200,169,110,0.08);
+}
+.contact-info-label { font-size: 0.56rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brass); }
+.contact-info-value { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: var(--cream); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-label { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cream-dim); }
+
+.form-input, .form-textarea, .form-select {
+  background: linear-gradient(180deg, #1a1a1a, #222);
+  border: 1px solid rgba(200,169,110,0.13); border-radius: 3px;
+  color: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.76rem; font-weight: 300;
+  padding: 0.8rem 1rem; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), inset 0 1px 2px rgba(0,0,0,0.3);
+  -webkit-appearance: none; appearance: none;
+}
+.form-textarea { resize: vertical; min-height: 130px; }
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: rgba(200,169,110,0.45);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.4), 0 0 0 3px rgba(200,169,110,0.07);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(176,168,152,0.35); }
+.form-select option { background: #1e1e1e; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--steel-dark); border-top: 1px solid rgba(200,169,110,0.1);
+  padding: 2.5rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-logo { font-family: 'Bebas Neue', cursive; font-size: 1.2rem; letter-spacing: 0.15em; color: var(--brass); }
+.footer-text { font-size: 0.58rem; letter-spacing: 0.15em; color: var(--cream-dim); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--brass); }
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════ */
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.94); z-index: 200;
+  align-items: center; justify-content: center; backdrop-filter: blur(8px);
+}
+.lightbox.open { display: flex; }
+.lightbox-close {
+  position: absolute; top: 2rem; right: 2rem;
+  font-family: 'Bebas Neue', cursive; font-size: 0.85rem; letter-spacing: 0.2em;
+  color: var(--cream-dim);
+  background: linear-gradient(180deg, #303030, #222);
+  border: 1px solid rgba(200,169,110,0.25); padding: 0.45rem 1rem; cursor: none;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 0 rgba(0,0,0,0.5), 0 3px 8px rgba(0,0,0,0.4);
+  position: fixed; top: 2rem; right: 2rem;
+  transition: color 0.2s, top 0.1s, box-shadow 0.1s;
+}
+.lightbox-close:hover { color: var(--brass); border-color: rgba(200,169,110,0.5); }
+.lightbox-close:active { top: calc(2rem + 2px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 0 rgba(0,0,0,0.5); }
+
+.lightbox-scene { width: 70vw; max-width: 900px; height: 55vh; border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(200,169,110,0.12); box-shadow: 0 20px 80px rgba(0,0,0,0.8); }
+.lightbox-caption { margin-top: 1.4rem; text-align: center; }
+.lightbox-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--cream); margin-bottom: 0.3rem; }
+.lightbox-meta { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); }
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════
+   HERO SCROLL INDICATOR
+═══════════════════════════════════════════ */
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--cream-dim); font-size: 0.54rem; letter-spacing: 0.3em; text-transform: uppercase;
+  animation: heroReveal 1.5s 0.6s ease-out forwards; opacity: 0;
+}
+.scroll-line { width: 1px; height: 38px; background: linear-gradient(180deg, transparent, var(--brass)); animation: scrollPulse 2s infinite; }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  nav { padding: 0 2rem; }
+  section { padding: 5rem 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .gallery-item:nth-child(1), .gallery-item:nth-child(7) { grid-row: span 1; }
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .lab-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .dials-panel { display: none; }
+}
+
+@media (max-width: 768px) {
+  /* General */
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  nav { padding: 0 1.5rem; }
+  section { padding: 4rem 0; }
+  .hero-content { padding: 0 1.5rem; }
+  .lab-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  .hero-name { font-size: 2.8rem; }
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+  .gallery-overlay { opacity: 1; }
+  .lab-controls-panel { flex-direction: column; }
+  .lab-dials-row { gap: 1.5rem; }
+  .nav-mode-badge { display: none; }
+
+  /* Entry — compact header, tight doors */
+  .entry-header { padding: 0.9rem 1rem 0.7rem; }
+  .entry-side { padding: 0.5rem 0.35rem 0.75rem; gap: 0.35rem; }
+  .door-wrap { width: min(104px, 27vw); height: min(168px, 35vh); }
+  .door-arch { top: -20px; width: 68px; height: 40px; border-radius: 34px 34px 0 0; }
+  .door-arch::after { inset: 5px 5px 0; border-radius: 29px 29px 0 0; }
+  .door-panel { inset: 8px; gap: 0.35rem; }
+  .door-icon { width: min(32px, 26%); height: min(32px, 26%); }
+  .door-knocker { bottom: 10px; }
+  .knocker-plate { width: 20px; height: 13px; }
+  .knocker-ring { width: 10px; height: 6px; border-width: 1.5px; }
+  .door-keyhole { right: 9px; }
+  .keyhole-circle { width: 7px; height: 7px; }
+  .keyhole-slot { width: 4px; height: 6px; }
+  .entry-answer { font-size: clamp(0.88rem, 3.8vw, 1.2rem); }
+  .entry-question { font-size: 0.42rem; letter-spacing: 0.1em; }
+  .entry-sub { display: none; }
+  .entry-enter-btn { font-size: 0.58rem; padding: 0.4rem 0.75rem; letter-spacing: 0.12em; margin-top: 0.25rem; }
+  .entry-divider { top: 6%; bottom: 5%; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary, .btn-blueprint { text-align: center; }
+  .gallery-filters { gap: 0.3rem; }
+  .persona-toggle { width: 100%; }
+  .persona-btn { flex: 1; }
+
+  /* Entry — very small screens */
+  .entry-header { padding: 0.65rem 0.75rem 0.5rem; }
+  .entry-header-sub { display: none; }
+  .entry-side { padding: 0.35rem 0.25rem 0.5rem; gap: 0.25rem; }
+  .door-wrap { width: min(86px, 25vw); height: min(140px, 32vh); }
+  .door-arch { top: -16px; width: 56px; height: 32px; border-radius: 28px 28px 0 0; }
+  .door-arch::after { inset: 4px 4px 0; border-radius: 24px 24px 0 0; }
+  .door-panel { inset: 6px; gap: 0.25rem; }
+  .door-icon { width: min(26px, 24%); height: min(26px, 24%); }
+  .door-knocker { bottom: 7px; }
+  .door-label { font-size: 0.5rem; letter-spacing: 0.04em; }
+  .entry-answer { font-size: clamp(0.78rem, 4.2vw, 1rem); }
+  .entry-enter-btn { font-size: 0.52rem; padding: 0.35rem 0.6rem; letter-spacing: 0.08em; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor — outside page-wrap so filter never clips them -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Page wrapper — exposure filter applied here, NOT on body -->
+<div id="page-wrap">
+
+<!-- ═══════════════════════════════════════
+     SPLIT-ENTRY LANDING
+═══════════════════════════════════════ -->
+<div id="entry-screen">
+  <!-- Name header — always on top, in flow -->
+  <div class="entry-header">
+    <p class="entry-header-title">Apurba Ghimire</p>
+    <p class="entry-header-sub">Choose your entrance</p>
+  </div>
+
+  <!-- Doors row — fills remaining space -->
+  <div class="entry-doors">
+    <div class="entry-divider"></div>
+
+    <!-- Photography Door -->
+    <div class="entry-side photo" id="entrySidePhoto">
+      <div class="entry-side-bg"></div>
+
+      <div class="door-wrap">
+        <div class="door-arch"></div>
+        <div class="door-frame">
+          <div class="door-panel">
+            <svg class="door-icon" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="22" stroke="#f0d898" stroke-width="1.2"/>
+              <circle cx="28" cy="28" r="14" stroke="#f0d898" stroke-width="0.8" stroke-dasharray="3 2"/>
+              <circle cx="28" cy="28" r="7" fill="rgba(240,216,152,0.2)" stroke="#f0d898" stroke-width="1"/>
+              <line x1="28" y1="6" x2="28" y2="22" stroke="#f0d898" stroke-width="0.7" opacity="0.5"/>
+              <line x1="28" y1="34" x2="28" y2="50" stroke="#f0d898" stroke-width="0.7" opacity="0.5"/>
+              <line x1="6" y1="28" x2="22" y2="28" stroke="#f0d898" stroke-width="0.7" opacity="0.5"/>
+              <line x1="34" y1="28" x2="50" y2="28" stroke="#f0d898" stroke-width="0.7" opacity="0.5"/>
+            </svg>
+            <span class="door-label">Photography</span>
+          </div>
+          <div class="door-knocker">
+            <div class="knocker-plate"><div class="knocker-ring"></div></div>
+          </div>
+          <div class="door-keyhole">
+            <div class="keyhole-circle"></div>
+            <div class="keyhole-slot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content">
+        <p class="entry-question">I'm here for the</p>
+        <h2 class="entry-answer">Art &amp;<br>Vision</h2>
+        <p class="entry-sub">Portraits · Landscapes · Architecture</p>
+        <button class="entry-enter-btn">Open Door →</button>
+      </div>
+    </div>
+
+    <!-- Engineering Door -->
+    <div class="entry-side engineer" id="entrySideEngineer">
+      <div class="entry-side-bg"></div>
+
+      <div class="door-wrap">
+        <div class="door-frame" style="background: linear-gradient(135deg, #182030 0%, #0e1520 40%, #0a1018 100%);">
+          <div class="door-panel">
+            <svg class="door-icon" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="10" stroke="#a8d4f0" stroke-width="1.2"/>
+              <circle cx="28" cy="28" r="5" fill="rgba(168,212,240,0.2)" stroke="#a8d4f0" stroke-width="0.8"/>
+              <rect x="25" y="4" width="6" height="8" rx="1" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="25" y="44" width="6" height="8" rx="1" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="4" y="25" width="8" height="6" rx="1" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="44" y="25" width="8" height="6" rx="1" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="9.5" y="9.5" width="7" height="7" rx="1" transform="rotate(45 13 13)" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="39.5" y="9.5" width="7" height="7" rx="1" transform="rotate(45 43 13)" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="9.5" y="39.5" width="7" height="7" rx="1" transform="rotate(45 13 43)" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+              <rect x="39.5" y="39.5" width="7" height="7" rx="1" transform="rotate(45 43 43)" fill="rgba(168,212,240,0.25)" stroke="#a8d4f0" stroke-width="0.7"/>
+            </svg>
+            <span class="door-label">Engineering</span>
+          </div>
+          <div class="door-knocker">
+            <div class="knocker-plate" style="background: linear-gradient(135deg, #1a3050, #0e2040, #162840);">
+              <div class="knocker-ring" style="border-color:#a8d4f0;"></div>
+            </div>
+          </div>
+          <div class="door-keyhole">
+            <div class="keyhole-circle" style="border-color:rgba(168,212,240,0.4);"></div>
+            <div class="keyhole-slot" style="border-color:rgba(168,212,240,0.3);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content">
+        <p class="entry-question">I'm here for the</p>
+        <h2 class="entry-answer">Systems &amp;<br>Precision</h2>
+        <p class="entry-sub">Optics · Research · Collaboration</p>
+        <button class="entry-enter-btn">Open Door →</button>
+      </div>
+    </div>
+  </div><!-- /entry-doors -->
+</div>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav>
+  <a href="#hero" class="nav-logo">Apurba Ghimire</a>
+  <ul class="nav-links">
+    <li><span class="nav-mode-badge photo-mode" id="navModeBadge"><span class="nav-mode-dot"></span><span id="navModeText">Photographer</span></span></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#lab">The Lab</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Shoot</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mobile-nav-link">About</a>
+  <a href="#gallery" class="mobile-nav-link">Gallery</a>
+  <a href="#lab" class="mobile-nav-link">The Lab</a>
+  <a href="#contact" class="mobile-nav-link">Book a Shoot</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="aperture" id="aperture"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow" id="heroEyebrow">Portfolio 2025 — Available for Commissions</p>
+    <h1 class="hero-name" id="heroName">Through<br>the <em>Lens.</em><br>Engineered.</h1>
+    <p class="hero-tagline" id="heroTagline">
+      Photography rooted in precision.<br>
+      Every frame is a system — light, geometry, timing —<br>
+      engineered to say something true.
+    </p>
+    <div class="hero-actions" id="heroActions">
+      <a href="#gallery" class="btn-primary">View Portfolio</a>
+      <a href="#contact" class="btn-secondary">Book a Shoot</a>
+    </div>
+  </div>
+
+  <!-- Spin Dials Panel -->
+  <div class="dials-panel" id="dialsPanelHero">
+    <div class="dial-unit">
+      <div class="dial-label">Aperture<br>f-stop</div>
+      <div class="dial" id="dialAperture" style="--spin-dur:25s; --spin-dir:normal">
+        <div class="dial-outer"></div>
+        <div class="dial-accent-ring"></div>
+        <div class="dial-inner" id="dialApertureInner">
+          <div class="dial-indicator" id="dialApertureIndicator"></div>
+        </div>
+      </div>
+      <div class="dial-value" id="dialApertureVal">f/2.8</div>
+    </div>
+
+    <div class="dial-unit">
+      <div class="dial-label">Shutter<br>Speed</div>
+      <div class="dial" id="dialShutter" style="--spin-dur:18s; --spin-dir:reverse">
+        <div class="dial-outer"></div>
+        <div class="dial-accent-ring"></div>
+        <div class="dial-inner" id="dialShutterInner">
+          <div class="dial-indicator" id="dialShutterIndicator"></div>
+        </div>
+      </div>
+      <div class="dial-value" id="dialShutterVal">1/250</div>
+    </div>
+
+    <div class="dial-unit">
+      <div class="dial-label">ISO<br>Sensitivity</div>
+      <div class="dial" id="dialISO" style="--spin-dur:31s; --spin-dir:normal">
+        <div class="dial-outer"></div>
+        <div class="dial-accent-ring"></div>
+        <div class="dial-inner" id="dialISOInner">
+          <div class="dial-indicator" id="dialISOIndicator"></div>
+        </div>
+      </div>
+      <div class="dial-value" id="dialISOVal">ISO 400</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">A Different<br><em>Eye.</em></h2>
+
+      <div class="persona-toggle">
+        <button class="persona-btn active" data-persona="photographer">Photographer</button>
+        <button class="persona-btn" data-persona="engineer">Engineer</button>
+      </div>
+
+      <div class="persona-content active" id="persona-photographer">
+        <p class="about-body">I'm <strong>Apurba Ghimire</strong> — a photographer drawn to the quiet geometries of the world. I shoot landscapes that breathe, portraits that hold their ground, and architecture that admits it's mostly shadow. My work lives in the space between what's there and what you almost missed.</p>
+        <p class="about-body">Currently based in <strong>Kathmandu, Nepal</strong>. Available for portrait sessions, editorial work, event photography, and long-term collaborations.</p>
+        <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="#gallery" class="btn-primary" style="font-size:0.78rem; padding:0.75rem 1.8rem;">See the Work</a>
+          <a href="#contact" class="btn-secondary" style="font-size:0.78rem; padding:0.75rem 1.8rem;">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="persona-content" id="persona-engineer">
+        <p class="about-body">Third-year <strong>Mechanical Engineering student</strong> at Kathmandu University, focusing on energy systems. Photography isn't a departure from engineering — it's the same problem stated differently.</p>
+        <p class="about-body">Research interests: advancing renewable and sustainable energy technologies, with an emphasis on solar energy innovation, efficiency, and clean power solutions. Actively open to internships and research collaborations.</p>
+        <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="#lab" class="btn-blueprint" style="font-size:0.78rem; padding:0.75rem 1.8rem;">View the Lab</a>
+          <a href="#contact" class="btn-secondary" style="font-size:0.78rem; padding:0.75rem 1.8rem;">Connect</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <div class="spec-card reveal reveal-delay-1">
+        <p class="spec-label">Primary System</p>
+        <p class="spec-value">Canon EOS 1300D · APS-C DSLR</p>
+        <div class="spec-bar"><div class="spec-bar-fill" data-width="90"></div></div>
+      </div>
+      <div class="spec-card reveal reveal-delay-2">
+        <p class="spec-label">Primary Discipline</p>
+        <p class="spec-value">Landscape · Portrait · Architecture · Urban</p>
+        <div class="spec-bar"><div class="spec-bar-fill" data-width="78"></div></div>
+      </div>
+      <div class="spec-card reveal reveal-delay-3">
+        <p class="spec-label">Engineering Focus</p>
+        <p class="spec-value">Energy Engineering · Renewable & Sustainable Systems</p>
+        <div class="spec-bar"><div class="spec-bar-fill" data-width="65"></div></div>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="about-controls reveal" style="transition-delay: 0.4s">
+        <p class="controls-label">System Status</p>
+        <div class="controls-row">
+          <span style="font-size:0.65rem; letter-spacing:0.1em; color:var(--cream-dim)">Camera Ready</span>
+          <div style="display:flex; align-items:center; gap:0.7rem;">
+            <div class="led" id="cameraLed"></div>
+            <button class="mini-btn" id="cameraBtn">ACTIVE</button>
+          </div>
+        </div>
+        <div class="controls-row">
+          <span style="font-size:0.65rem; letter-spacing:0.1em; color:var(--cream-dim)">Lab Systems</span>
+          <div style="display:flex; align-items:center; gap:0.7rem;">
+            <div class="led blue" id="labLed"></div>
+            <button class="mini-btn" id="labBtn">ONLINE</button>
+          </div>
+        </div>
+        <div class="controls-row">
+          <span style="font-size:0.65rem; letter-spacing:0.1em; color:var(--cream-dim)">Bookings</span>
+          <div style="display:flex; align-items:center; gap:0.7rem;">
+            <div class="led amber"></div>
+            <button class="mini-btn" id="bookingsBtn">OPEN</button>
+          </div>
+        </div>
+        <div class="controls-row" style="margin-top:0.8rem; border-bottom:none;">
+          <div class="toggle-wrap">
+            <span class="toggle-label">Show Engineering</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="engToggle">
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div><!-- /about-grid -->
+  </div><!-- /section-inner -->
+</section>
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span>Portrait Photography</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Landscape & Nature</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Architectural Documentation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Urban & Street</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Editorial Commissions</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Fine Art Prints Available</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Energy Systems Research</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Kathmandu University SOE</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Portrait Photography</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Landscape & Nature</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Architectural Documentation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Urban & Street</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Editorial Commissions</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Fine Art Prints Available</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Energy Systems Research</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Kathmandu University SOE</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════ -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="reveal">
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">Selected<br><em>Work.</em></h2>
+    </div>
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="landscape">Landscape</button>
+      <button class="filter-btn" data-filter="portrait">Portrait</button>
+      <button class="filter-btn" data-filter="urban">Urban</button>
+      <button class="filter-btn" data-filter="architecture">Architecture</button>
+    </div>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-item reveal" data-cat="landscape" data-lb-title="After the Rain" data-lb-meta="Landscape · Columbia River Gorge" data-lb-class="ph-3 scene-landscape">
+      <div class="photo-scene ph-3 scene-landscape"><svg width="60" height="40" viewBox="0 0 60 40" opacity="0.12"><path d="M0 30 Q15 10 30 25 Q45 40 60 15" stroke="#c8a96e" stroke-width="1.5" fill="none"/><line x1="0" y1="28" x2="60" y2="28" stroke="#4a7fa5" stroke-width="0.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">After the Rain</p><p class="gallery-cat">Landscape · Columbia River Gorge</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" data-cat="portrait" data-lb-title="Golden Hour" data-lb-meta="Portrait · Natural Light Study" data-lb-class="ph-2 scene-portrait">
+      <div class="photo-scene ph-2 scene-portrait"><svg width="40" height="60" viewBox="0 0 40 60" opacity="0.12"><circle cx="20" cy="20" r="14" stroke="#c8a96e" stroke-width="1" fill="none"/><line x1="20" y1="36" x2="20" y2="60" stroke="#c8a96e" stroke-width="1.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Golden Hour</p><p class="gallery-cat">Portrait · Natural Light</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-cat="urban" data-lb-title="Steel &amp; Light" data-lb-meta="Urban · Portland Bridge Series" data-lb-class="ph-1 scene-city">
+      <div class="photo-scene ph-1 scene-city"><svg width="60" height="40" viewBox="0 0 60 40" opacity="0.1"><rect x="10" y="5" width="8" height="35" stroke="#c8a96e" stroke-width="0.8" fill="none"/><rect x="25" y="12" width="10" height="28" stroke="#c8a96e" stroke-width="0.8" fill="none"/><rect x="42" y="2" width="8" height="38" stroke="#c8a96e" stroke-width="0.8" fill="none"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Steel & Light</p><p class="gallery-cat">Urban · Portland</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="architecture" data-lb-title="Perpendicular" data-lb-meta="Architecture · Brutalist Study" data-lb-class="ph-4 scene-arch">
+      <div class="photo-scene ph-4 scene-arch"><svg width="50" height="50" viewBox="0 0 50 50" opacity="0.12"><rect x="5" y="5" width="40" height="40" stroke="#c8a96e" stroke-width="0.8" fill="none"/><line x1="5" y1="25" x2="45" y2="25" stroke="#4a7fa5" stroke-width="0.5"/><line x1="25" y1="5" x2="25" y2="45" stroke="#4a7fa5" stroke-width="0.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Perpendicular</p><p class="gallery-cat">Architecture · Brutalist</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" data-cat="landscape" data-lb-title="First Light" data-lb-meta="Landscape · Mt. Hood" data-lb-class="ph-5 scene-landscape">
+      <div class="photo-scene ph-5 scene-landscape"><svg width="60" height="40" viewBox="0 0 60 40" opacity="0.1"><polygon points="30,5 50,35 10,35" stroke="#c8a96e" stroke-width="0.8" fill="none"/><line x1="0" y1="35" x2="60" y2="35" stroke="#4a7fa5" stroke-width="0.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">First Light</p><p class="gallery-cat">Landscape · Mt. Hood</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-cat="portrait" data-lb-title="Contemplation" data-lb-meta="Portrait · Available Light" data-lb-class="ph-6">
+      <div class="photo-scene ph-6 scene-portrait"><svg width="40" height="50" viewBox="0 0 40 50" opacity="0.1"><ellipse cx="20" cy="15" rx="10" ry="12" stroke="#c8a96e" stroke-width="0.8" fill="none"/><path d="M8 50 Q12 30 20 28 Q28 30 32 50" stroke="#c8a96e" stroke-width="0.8" fill="none"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Contemplation</p><p class="gallery-cat">Portrait · Available Light</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="urban" data-lb-title="Night Geometry" data-lb-meta="Urban · Long Exposure" data-lb-class="ph-7 scene-city">
+      <div class="photo-scene ph-7 scene-city"><svg width="60" height="60" viewBox="0 0 60 60" opacity="0.1"><circle cx="30" cy="30" r="20" stroke="#c8a96e" stroke-width="0.8" fill="none"/><circle cx="30" cy="30" r="12" stroke="#4a7fa5" stroke-width="0.5" fill="none"/><line x1="30" y1="10" x2="30" y2="50" stroke="rgba(200,169,110,0.4)" stroke-width="0.5"/><line x1="10" y1="30" x2="50" y2="30" stroke="rgba(200,169,110,0.4)" stroke-width="0.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Night Geometry</p><p class="gallery-cat">Urban · Long Exposure</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" data-cat="architecture" data-lb-title="Load Bearing" data-lb-meta="Architecture · Industrial" data-lb-class="ph-8 scene-arch">
+      <div class="photo-scene ph-8 scene-arch"><svg width="60" height="40" viewBox="0 0 60 40" opacity="0.1"><line x1="5" y1="35" x2="55" y2="35" stroke="#c8a96e" stroke-width="1.5"/><line x1="15" y1="35" x2="15" y2="5" stroke="#c8a96e" stroke-width="0.8"/><line x1="45" y1="35" x2="45" y2="5" stroke="#c8a96e" stroke-width="0.8"/><line x1="15" y1="5" x2="45" y2="5" stroke="#c8a96e" stroke-width="0.8"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Load Bearing</p><p class="gallery-cat">Architecture · Industrial</p></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-cat="landscape" data-lb-title="Coastal Erosion" data-lb-meta="Landscape · Oregon Coast" data-lb-class="ph-9 scene-landscape">
+      <div class="photo-scene ph-9 scene-landscape"><svg width="70" height="35" viewBox="0 0 70 35" opacity="0.1"><path d="M0 25 C15 5 25 30 35 20 S55 5 70 18" stroke="#c8a96e" stroke-width="1" fill="none"/><line x1="0" y1="28" x2="70" y2="28" stroke="#4a7fa5" stroke-width="0.5"/></svg></div>
+      <div class="gallery-overlay"><p class="gallery-title">Coastal Erosion</p><p class="gallery-cat">Landscape · Oregon Coast</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     THE LAB
+═══════════════════════════════════════ -->
+<section id="lab">
+  <div class="section-inner">
+  <div class="lab-content">
+    <div class="reveal">
+      <p class="section-label">The Lab</p>
+      <h2 class="section-title">Where Physics Meets<br><em>Composition.</em></h2>
+      <p style="font-size:0.8rem;line-height:2;color:var(--cream-dim);max-width:580px;">Engineering isn't the opposite of art — it's the scaffolding beneath it. Here's how mechanical engineering thinking shapes every photograph I make.</p>
+    </div>
+
+    <div class="lab-grid">
+      <div class="lab-card reveal reveal-delay-1" data-num="01">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#c8a96e" stroke-width="1"/><circle cx="20" cy="20" r="8" stroke="#c8a96e" stroke-width="0.5" stroke-dasharray="2 2"/><circle cx="20" cy="20" r="3" fill="#c8a96e" opacity="0.6"/></svg></div>
+        <h3 class="lab-card-title">Aperture as Control System</h3>
+        <p class="lab-card-text">An f-stop is a mechanical ratio. The aperture diameter relative to focal length determines both light transmission and depth of field. I treat exposure as a feedback loop, not intuition.</p>
+        <div class="lab-equation">N = f / D &nbsp;·&nbsp; EV = log₂(N² / t)</div>
+      </div>
+      <div class="lab-card reveal reveal-delay-2" data-num="02">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M5 20 L15 8 L25 25 L35 12" stroke="#4a7fa5" stroke-width="1.2"/><circle cx="15" cy="8" r="2" fill="#c8a96e"/><circle cx="35" cy="12" r="2" fill="#c8a96e"/></svg></div>
+        <h3 class="lab-card-title">Shutter Timing & Dynamics</h3>
+        <p class="lab-card-text">Motion blur is a dynamics problem. Given velocity and desired blur length in pixels, shutter speed is a calculated result — not a guess. Water, crowds, and stars each have their own equations.</p>
+        <div class="lab-equation">blur_px = v · t · (f / sensor_width)</div>
+      </div>
+      <div class="lab-card reveal reveal-delay-3" data-num="03">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><line x1="5" y1="35" x2="35" y2="5" stroke="#c8a96e" stroke-width="1"/><line x1="5" y1="5" x2="35" y2="35" stroke="#4a7fa5" stroke-width="0.5" stroke-dasharray="3 2"/><rect x="17" y="17" width="6" height="6" stroke="#c8a96e" stroke-width="0.8"/></svg></div>
+        <h3 class="lab-card-title">Spatial Composition & Vectors</h3>
+        <p class="lab-card-text">The rule of thirds approximates where human vision lands on a 2D plane. I compose using visual force vectors — leading lines are literally vectors guiding the eye through a scene.</p>
+        <div class="lab-equation">visual_weight = Σ(contrast_i · area_i · position_i)</div>
+      </div>
+      <div class="lab-card reveal reveal-delay-1" data-num="04">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 5 L35 32 L5 32 Z" stroke="#c8a96e" stroke-width="1" fill="none"/><line x1="20" y1="5" x2="20" y2="32" stroke="#4a7fa5" stroke-width="0.5"/></svg></div>
+        <h3 class="lab-card-title">Optical Aberrations</h3>
+        <p class="lab-card-text">Chromatic aberration, vignetting, barrel distortion — most see flaws. I see material properties. Understanding why lenses distort lets me choose when to embrace aberration as character.</p>
+        <div class="lab-equation">Δλ = (n₁ - n₂) · f · sin(θ)</div>
+      </div>
+      <div class="lab-card reveal reveal-delay-2" data-num="05">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="#c8a96e" stroke-width="0.8" stroke-dasharray="4 3"/><path d="M8 20 Q14 10 20 20 Q26 30 32 20" stroke="#4a7fa5" stroke-width="1"/></svg></div>
+        <h3 class="lab-card-title">Light as Energy Transfer</h3>
+        <p class="lab-card-text">Photons are packets of energy. The way light wraps a face, scatters through fog, or bounces off concrete is governed by physical laws — knowing them means I can predict a shot rather than hope for it.</p>
+        <div class="lab-equation">I(r) = P / (4πr²) · cos(θ)</div>
+      </div>
+      <div class="lab-card reveal reveal-delay-3" data-num="06">
+        <div class="lab-icon"><svg viewBox="0 0 40 40" fill="none"><rect x="5" y="12" width="30" height="16" stroke="#c8a96e" stroke-width="1" rx="2"/><circle cx="20" cy="20" r="5" stroke="#4a7fa5" stroke-width="0.8"/><line x1="20" y1="5" x2="20" y2="35" stroke="rgba(200,169,110,0.3)" stroke-width="0.5"/></svg></div>
+        <h3 class="lab-card-title">Gear as Tooling</h3>
+        <p class="lab-card-text">A camera body is a precision instrument. I approach lens selection the way an engineer selects a cutting tool: based on material (subject), operation (shoot type), and required tolerance.</p>
+        <div class="lab-equation">MTF(f) = |H(f)| = contrast at spatial frequency f</div>
+      </div>
+    </div>
+
+    <!-- Lab Control Panel with Dials -->
+    <div class="lab-controls-panel reveal" style="margin-top:3rem;">
+      <p class="panel-label-strip">Exposure Control Unit · Model AM-2025</p>
+      <div class="panel-body">
+
+          <!-- Lab Dials -->
+          <div class="lab-dials-row">
+            <div class="dial-unit">
+              <div class="dial-label">Aperture</div>
+              <div class="dial" id="labDialAperture" style="--spin-dur:22s; --spin-dir:normal">
+                <div class="dial-outer"></div>
+                <div class="dial-accent-ring"></div>
+                <div class="dial-inner" id="labDialApertureInner">
+                  <div class="dial-indicator" id="labDialApertureInd"></div>
+                </div>
+              </div>
+              <div class="dial-value" id="labDialApertureVal">f/2.8</div>
+            </div>
+
+            <div class="dial-unit">
+              <div class="dial-label">Shutter</div>
+              <div class="dial" id="labDialShutter" style="--spin-dur:16s; --spin-dir:reverse">
+                <div class="dial-outer"></div>
+                <div class="dial-accent-ring"></div>
+                <div class="dial-inner" id="labDialShutterInner">
+                  <div class="dial-indicator" id="labDialShutterInd"></div>
+                </div>
+              </div>
+              <div class="dial-value" id="labDialShutterVal">1/250</div>
+            </div>
+
+            <div class="dial-unit">
+              <div class="dial-label">ISO</div>
+              <div class="dial" id="labDialISO" style="--spin-dur:28s; --spin-dir:normal">
+                <div class="dial-outer"></div>
+                <div class="dial-accent-ring"></div>
+                <div class="dial-inner" id="labDialISOInner">
+                  <div class="dial-indicator" id="labDialISOInd"></div>
+                </div>
+              </div>
+              <div class="dial-value" id="labDialISOVal">ISO 400</div>
+            </div>
+
+            <div class="dial-unit">
+              <div class="dial-label">Focus<br>Distance</div>
+              <div class="dial" id="labDialFocus" style="--spin-dur:19s; --spin-dir:reverse">
+                <div class="dial-outer"></div>
+                <div class="dial-accent-ring" style="border-color:rgba(74,127,165,0.3)"></div>
+                <div class="dial-inner" id="labDialFocusInner">
+                  <div class="dial-indicator" id="labDialFocusInd" style="background: linear-gradient(to top, rgba(74,127,165,0.15), var(--blueprint) 60%, #6ab8de);"></div>
+                </div>
+              </div>
+              <div class="dial-value" id="labDialFocusVal" style="color:var(--blueprint)">3.2m</div>
+            </div>
+          </div>
+
+          <!-- Faders + Buttons -->
+          <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <div style="display:flex; gap:2rem; flex-wrap:wrap;">
+              <div class="fader-wrap">
+                <span class="fader-label">Exposure Comp</span>
+                <input type="range" class="fader" id="exposureFader" data-exposure="true" min="-3" max="3" value="0" step="0.3">
+                <span class="fader-value" id="expVal">± 0 EV  ·  Metered</span>
+              </div>
+              <div class="fader-wrap">
+                <span class="fader-label">Sharpness</span>
+                <input type="range" class="fader" id="sharpFader" min="0" max="100" value="72">
+                <span class="fader-value" id="sharpVal">72%</span>
+              </div>
+            </div>
+
+            <div class="panel-buttons">
+              <button class="panel-btn panel-btn-brass" id="randomizeBtn">Randomize</button>
+              <button class="panel-btn panel-btn-steel" id="resetBtn">Reset</button>
+              <button class="panel-btn panel-btn-steel" id="savePresetBtn">Save Preset</button>
+              <button class="panel-btn panel-btn-red" id="lockBtn">LOCK</button>
+            </div>
+          </div>
+
+      </div><!-- /panel-body -->
+    </div><!-- /lab-controls-panel -->
+
+  </div><!-- /lab-content -->
+  </div><!-- /section-inner -->
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section id="contact">
+  <div class="section-inner">
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's Build<br><em>Something.</em></h2>
+      <p style="font-size:0.8rem;line-height:2;color:var(--cream-dim);margin-bottom:2.5rem;">Whether you need portraits, editorial work, or architectural documentation — or want to talk optical systems and engineering — I'm reachable.</p>
+
+      <div class="contact-info-item"><span class="contact-info-label">Location</span><span class="contact-info-value">Kathmandu, Nepal — Available All around Nepal</span></div>
+      <div class="contact-info-item"><span class="contact-info-label">Email</span><span class="contact-info-value">ghimireapurba@gmail.com</span></div>
+      <div class="contact-info-item"><span class="contact-info-label">Response Time</span><span class="contact-info-value">Within 48 hours</span></div>
+      <div style="margin-top:2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
+        <a href="https://www.instagram.com/apurbye" class="btn-primary" style="font-size:0.78rem; padding:0.75rem 1.6rem;">Instagram</a>
+        <a href="https://np.linkedin.com/in/apurba-ghimire-97a7431a7" class="btn-secondary" style="font-size:0.78rem; padding:0.75rem 1.6rem;">LinkedIn</a>
+        <a href="https://github.com/apurbye" class="btn-secondary" style="font-size:0.78rem; padding:0.75rem 1.6rem;">GitHub</a>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Apurba" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Ghimire" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com" required></div>
+        <div class="form-group">
+          <label class="form-label">Inquiry Type</label>
+          <select class="form-select">
+            <option value="">Select a type...</option>
+            <option>Portrait Session</option>
+            <option>Editorial / Commercial</option>
+            <option>Event Photography</option>
+            <option>Architectural / Real Estate</option>
+            <option>Fine Art Print Purchase</option>
+            <option>Engineering Collaboration</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about your project, timeline, and what you're envisioning..."></textarea></div>
+        <div style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center;">
+          <button type="submit" class="btn-primary" style="cursor:none; font-size:0.88rem;">Send Message →</button>
+          <button type="button" id="formClearBtn" class="btn-secondary" style="cursor:none; font-size:0.88rem;">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div><!-- /contact-grid -->
+  </div><!-- /section-inner -->
+</section>
+<footer>
+  <div class="footer-logo">Apurba Ghimire</div>
+  <p class="footer-text">© 2025 Apurba Ghimire · Photography & Engineering</p>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/apurbye/">Instagram</a>
+    <a href="https://np.linkedin.com/in/apurba-ghimire-97a7431a7">LinkedIn</a>
+    <a href="https://github.com/apurbye">GitHub</a>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxCloseBtn">Close ✕</button>
+  <div style="text-align:center">
+    <div class="lightbox-scene" id="lightboxScene"></div>
+    <div class="lightbox-caption">
+      <p class="lightbox-title" id="lightboxTitle"></p>
+      <p class="lightbox-meta" id="lightboxMeta"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+(function() {
+'use strict';
+
+/* ════════════════════════════════════════
+   CURSOR
+════════════════════════════════════════ */
+const cursorEl   = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  if (cursorEl) { cursorEl.style.left = mx + 'px'; cursorEl.style.top = my + 'px'; }
+});
+
+(function animCursor() {
+  rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
+  if (cursorRing) { cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px'; }
+  requestAnimationFrame(animCursor);
+})();
+
+function attachCursorListeners() {
+  document.querySelectorAll('a, button, .gallery-item, .entry-side').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing && cursorRing.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => cursorRing && cursorRing.classList.remove('expanded'));
+  });
+  document.querySelectorAll('.dial').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursorRing && cursorRing.classList.add('expanded','spinning'); });
+    el.addEventListener('mouseleave', () => { cursorRing && cursorRing.classList.remove('expanded','spinning'); });
+  });
+}
+attachCursorListeners();
+
+/* ── APERTURE BLADES ── */
+const ap = document.getElementById('aperture');
+if (ap) {
+  for (let i = 0; i < 8; i++) {
+    const b = document.createElement('div');
+    b.className = 'aperture-blade';
+    b.style.transform = `rotate(${i * 22.5}deg) translateY(-50%)`;
+    ap.appendChild(b);
+  }
+}
+
+/* ════════════════════════════════════════
+   ENTRY SCREEN
+════════════════════════════════════════ */
+const heroContents = {
+  photo: {
+    eyebrow: 'Portfolio 2025 — Available for Commissions',
+    name:    'Through<br>the <em>Lens.</em><br>Engineered.',
+    tagline: 'Photography rooted in precision.<br>Every frame is a system — light, geometry, timing —<br>engineered to say something true.',
+    actions: '<a href="#gallery" class="btn-primary">View Portfolio</a><a href="#contact" class="btn-secondary">Book a Shoot</a>',
+    navText: 'Photographer', navClass: 'photo-mode'
+  },
+  engineer: {
+    eyebrow: 'Kathmandu University SOE · Class of 2028',
+    name:    'Systems<br>Built <em>with</em><br>Vision.',
+    tagline: 'Mechanical engineering student with a photographer\'s eye.<br>Energy systems, precision tolerances, and the physics<br>of capturing light — by design.',
+    actions: '<a href="#lab" class="btn-blueprint">Explore the Lab</a><a href="#contact" class="btn-secondary">Collaborate</a>',
+    navText: 'Engineer', navClass: 'engineer-mode'
+  }
+};
+
+function enterSite(mode) {
+  const es = document.getElementById('entry-screen');
+  if (es) { es.classList.add('exit'); setTimeout(() => { es.style.display = 'none'; }, 800); }
+
+  const c = heroContents[mode];
+  const eyebrow = document.getElementById('heroEyebrow');
+  const name    = document.getElementById('heroName');
+  const tagline = document.getElementById('heroTagline');
+  const actions = document.getElementById('heroActions');
+  if (eyebrow) eyebrow.innerHTML = c.eyebrow;
+  if (name)    name.innerHTML    = c.name;
+  if (tagline) tagline.innerHTML = c.tagline;
+  if (actions) actions.innerHTML = c.actions;
+
+  const bg = document.getElementById('heroBg');
+  if (bg && mode === 'engineer') bg.classList.add('engineer-bg');
+
+  const badge   = document.getElementById('navModeBadge');
+  const modeText = document.getElementById('navModeText');
+  if (badge)    badge.className          = 'nav-mode-badge ' + c.navClass;
+  if (modeText) modeText.textContent     = c.navText;
+
+  if (mode === 'engineer') {
+    const btns     = document.querySelectorAll('.persona-btn');
+    const contents = document.querySelectorAll('.persona-content');
+    btns.forEach(b => b.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    if (btns[1])     btns[1].classList.add('active');
+    const engContent = document.getElementById('persona-engineer');
+    if (engContent)  engContent.classList.add('active');
+    const engToggle  = document.getElementById('engToggle');
+    if (engToggle)   engToggle.checked = true;
+  }
+
+  setTimeout(attachCursorListeners, 150);
+}
+
+const entrySidePhoto    = document.getElementById('entrySidePhoto');
+const entrySideEngineer = document.getElementById('entrySideEngineer');
+if (entrySidePhoto)    entrySidePhoto.addEventListener('click',    () => enterSite('photo'));
+if (entrySideEngineer) entrySideEngineer.addEventListener('click', () => enterSite('engineer'));
+
+/* ════════════════════════════════════════
+   HAMBURGER / MOBILE NAV
+════════════════════════════════════════ */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+function closeMobileNav() {
+  if (mobileNav) mobileNav.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+}
+
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    if (mobileNav) mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+}
+
+document.querySelectorAll('.mobile-nav-link').forEach(a => {
+  a.addEventListener('click', closeMobileNav);
+});
+
+/* ════════════════════════════════════════
+   PERSONA TOGGLE
+════════════════════════════════════════ */
+function switchPersona(type) {
+  /* Swap about content */
+  document.querySelectorAll('.persona-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.persona-content').forEach(c => c.classList.remove('active'));
+  const btn     = document.querySelector(`.persona-btn[data-persona="${type}"]`);
+  const content = document.getElementById('persona-' + type);
+  if (btn)     btn.classList.add('active');
+  if (content) content.classList.add('active');
+
+  /* Sync eng toggle */
+  const engToggle = document.getElementById('engToggle');
+  if (engToggle) engToggle.checked = (type === 'engineer');
+
+  /* Update hero background */
+  const bg = document.getElementById('heroBg');
+  if (bg) {
+    if (type === 'engineer') bg.classList.add('engineer-bg');
+    else                     bg.classList.remove('engineer-bg');
+  }
+
+  /* Update nav mode badge */
+  const badge    = document.getElementById('navModeBadge');
+  const modeText = document.getElementById('navModeText');
+  if (badge) {
+    badge.className = 'nav-mode-badge ' + (type === 'engineer' ? 'engineer-mode' : 'photo-mode');
+  }
+  if (modeText) modeText.textContent = (type === 'engineer') ? 'Engineer' : 'Photographer';
+
+  /* Update nav CTA label */
+  const cta = document.querySelector('.nav-cta');
+  if (cta) cta.textContent = (type === 'engineer') ? 'Collaborate' : 'Book a Shoot';
+
+  /* Update hero text content to match the persona */
+  const c = heroContents[type];
+  if (c) {
+    const eyebrow = document.getElementById('heroEyebrow');
+    const name    = document.getElementById('heroName');
+    const tagline = document.getElementById('heroTagline');
+    const actions = document.getElementById('heroActions');
+    if (eyebrow) eyebrow.innerHTML = c.eyebrow;
+    if (name)    name.innerHTML    = c.name;
+    if (tagline) tagline.innerHTML = c.tagline;
+    if (actions) actions.innerHTML = c.actions;
+    /* Re-attach cursor listeners since heroActions content changed */
+    setTimeout(attachCursorListeners, 150);
+  }
+}
+
+document.querySelectorAll('.persona-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchPersona(btn.dataset.persona));
+});
+
+/* ════════════════════════════════════════
+   SYSTEM STATUS CONTROLS
+════════════════════════════════════════ */
+const cameraBtn = document.getElementById('cameraBtn');
+const cameraLed = document.getElementById('cameraLed');
+if (cameraBtn) {
+  cameraBtn.addEventListener('click', () => {
+    const active = cameraBtn.textContent.trim() === 'ACTIVE';
+    cameraBtn.textContent = active ? 'STANDBY' : 'ACTIVE';
+    if (cameraLed) {
+      cameraLed.style.background = active
+        ? 'radial-gradient(circle at 35% 35%, #ffb347, #c06000)'
+        : '';
+      cameraLed.style.boxShadow = active
+        ? '0 0 6px rgba(200,130,0,0.7), inset 0 1px 0 rgba(255,255,255,0.4)'
+        : '';
+    }
+  });
+}
+
+const labBtn  = document.getElementById('labBtn');
+const labLed  = document.getElementById('labLed');
+const labCycle = ['ONLINE','SLEEP','BOOT'];
+let labIdx = 0;
+if (labBtn) {
+  labBtn.addEventListener('click', () => {
+    labIdx = (labIdx + 1) % labCycle.length;
+    labBtn.textContent = labCycle[labIdx];
+    if (!labLed) return;
+    if (labIdx === 0) {
+      labLed.style.background = ''; labLed.style.boxShadow = ''; labLed.style.animation = '';
+    } else if (labIdx === 1) {
+      labLed.style.background = 'radial-gradient(circle at 35% 35%, #555, #222)';
+      labLed.style.boxShadow  = '0 0 3px rgba(100,100,100,0.3)';
+      labLed.style.animationPlayState = 'paused';
+    } else {
+      labLed.style.background = 'radial-gradient(circle at 35% 35%, #ffe066, #c8a000)';
+      labLed.style.boxShadow  = '0 0 8px rgba(220,200,0,0.7)';
+      labLed.style.animation  = 'ledBlink 0.4s ease-in-out infinite';
+    }
+  });
+}
+
+const bookingsBtn = document.getElementById('bookingsBtn');
+if (bookingsBtn) bookingsBtn.addEventListener('click', () => { window.location.hash = 'contact'; });
+
+/* ── Show Engineering toggle ── */
+const engToggle = document.getElementById('engToggle');
+if (engToggle) {
+  engToggle.addEventListener('change', () => {
+    switchPersona(engToggle.checked ? 'engineer' : 'photographer');
+  });
+}
 
 
-			<!-- contact section -->
-			<section id="contact" class="py-7">
-				<div class="container">
-					<div class="contact-content flex">
-						<div class="contact-left">
-							<div class="title">
-								<h2>contact me</h2>
-							</div>
-							<p class="lead">
-								<i class="fas fa-phone-alt"></i> +977 9863575757
-							</p>
-							<p class="lead">
-								<i class="fas fa-envelope"></i>
-								ghimireapurba@gmail.com
-							</p>
-							<form action="">
-								<input
-									type="text"
-									class="form-control"
-									placeholder="Your name here ..."
-								/>
-								<input
-									type="email"
-									class="form-control"
-									placeholder="Your email here"
-								/>
-								<input
-									type="submit"
-									class="btn-submit btn"
-									value="Submit"
-								/>
-							</form>
-						</div>
 
-						<div class="contact-right">
-							<img src="images/insta.jpg" alt="contact image" />
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- end of contact section -->
-		</main>
-		<!-- end of main content -->
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+const revObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      entry.target.querySelectorAll('.spec-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revObserver.observe(el));
 
-		<!-- footer -->
-		<footer id="footer" class="py-7">
-			<div class="container">
-				<div class="footer-content">
-					<div>
-						<h3>Apurba Ghimire</h3>
-						<div><img src="backimg.jpg" /></div>
-					</div>
+/* ════════════════════════════════════════
+   GALLERY FILTER
+════════════════════════════════════════ */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      if (filter === 'all' || item.dataset.cat === filter) {
+        item.style.display = '';
+        setTimeout(() => { item.style.opacity = '1'; }, 30);
+      } else {
+        item.style.opacity = '0';
+        setTimeout(() => { item.style.display = 'none'; }, 280);
+      }
+    });
+  });
+});
 
-					<div>
-						<h3>Links</h3>
-						<ul class="flex">
-							<li><a href="#">About Me</a></li>
-							<li><a href="#">Contact Me</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- end of footer -->
+/* ── Gallery lightbox via data attributes ── */
+function openLightbox(title, meta, cls) {
+  const lb    = document.getElementById('lightbox');
+  const scene = document.getElementById('lightboxScene');
+  const tEl   = document.getElementById('lightboxTitle');
+  const mEl   = document.getElementById('lightboxMeta');
+  if (!lb) return;
+  if (scene) scene.className = 'lightbox-scene ' + cls;
+  if (tEl)   tEl.textContent = title;
+  if (mEl)   mEl.textContent = meta;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-		<!-- typewriting js -->
-		<script src="typewriting-master/typewriting.js"></script>
-	</body>
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (lb) lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => {
+    openLightbox(
+      item.dataset.lbTitle,
+      item.dataset.lbMeta,
+      item.dataset.lbClass
+    );
+  });
+});
+
+const lightbox       = document.getElementById('lightbox');
+const lightboxClose  = document.getElementById('lightboxCloseBtn');
+if (lightbox)      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ════════════════════════════════════════
+   CONTACT FORM
+════════════════════════════════════════ */
+const contactForm = document.getElementById('contactForm');
+const formClearBtn = document.getElementById('formClearBtn');
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type=submit]');
+    if (btn) {
+      btn.textContent = 'Sent ✓';
+      btn.style.background = 'linear-gradient(180deg, #6adf9a 0%, #40a060 60%, #2d7a48 100%)';
+      btn.style.boxShadow  = 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 0 #1a5030, 0 6px 16px rgba(0,180,80,0.25)';
+      btn.style.color      = '#fff';
+      btn.disabled         = true;
+    }
+  });
+}
+if (formClearBtn && contactForm) {
+  formClearBtn.addEventListener('click', () => contactForm.reset());
+}
+
+/* ════════════════════════════════════════
+   FADER — sharpness (non-exposure)
+════════════════════════════════════════ */
+const sharpFader = document.getElementById('sharpFader');
+const sharpVal   = document.getElementById('sharpVal');
+function updateSharpFader() {
+  if (!sharpFader) return;
+  const pct = ((sharpFader.value - sharpFader.min) / (sharpFader.max - sharpFader.min)) * 100;
+  sharpFader.style.background = `linear-gradient(90deg, var(--blueprint) 0%, var(--blueprint) ${pct}%, #2a2a2a ${pct}%, #2a2a2a 100%)`;
+  if (sharpVal) sharpVal.textContent = Math.round(sharpFader.value) + '%';
+}
+if (sharpFader) { sharpFader.addEventListener('input', updateSharpFader); updateSharpFader(); }
+
+/* ════════════════════════════════════════
+   DIAL SYSTEM
+════════════════════════════════════════ */
+const apertureStops = ['f/1.4','f/1.8','f/2','f/2.8','f/4','f/5.6','f/8','f/11','f/16'];
+const shutterStops  = ['1s','1/2','1/4','1/15','1/30','1/60','1/125','1/250','1/500','1/1000','1/2000'];
+const isoStops      = ['ISO 100','ISO 200','ISO 400','ISO 800','ISO 1600','ISO 3200','ISO 6400'];
+const focusStops    = ['0.3m','0.6m','1.0m','1.5m','2.0m','3.2m','5.0m','∞'];
+
+let activeDial = null, dialStartY = 0;
+document.addEventListener('mousemove', e => {
+  if (!activeDial) return;
+  activeDial.handleDrag(e.clientY - dialStartY);
+  dialStartY = e.clientY;
+});
+document.addEventListener('mouseup',  () => { activeDial = null; document.body.style.userSelect = ''; });
+document.addEventListener('touchmove', e => {
+  if (!activeDial) return;
+  activeDial.handleDrag(e.touches[0].clientY - dialStartY);
+  dialStartY = e.touches[0].clientY;
+}, { passive: false });
+document.addEventListener('touchend', () => { activeDial = null; });
+
+function makeDial(dialId, indicatorId, valueId, stops, initIdx) {
+  const dialEl    = document.getElementById(dialId);
+  if (!dialEl) return null;
+  const indicator = document.getElementById(indicatorId);
+  const valueEl   = document.getElementById(valueId);
+  let idx = initIdx;
+  let animAngle = angleFor(initIdx);
+  let rafId = null;
+
+  function angleFor(i) { return i * (270 / (stops.length - 1)) - 135; }
+  function applyRot(deg) { if (indicator) indicator.style.transform = `translateY(-100%) rotate(${deg}deg)`; }
+
+  function animate() {
+    const target = angleFor(idx);
+    const diff   = target - animAngle;
+    if (Math.abs(diff) < 0.3) {
+      animAngle = target; applyRot(animAngle); rafId = null;
+    } else {
+      animAngle += diff * 0.22; applyRot(animAngle);
+      rafId = requestAnimationFrame(animate);
+    }
+    if (valueEl) valueEl.textContent = stops[idx];
+  }
+
+  function setIdx(i) {
+    idx = Math.max(0, Math.min(stops.length - 1, i));
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(animate);
+  }
+
+  const self = {
+    handleDrag(delta) {
+      const ni = Math.max(0, Math.min(stops.length - 1, Math.round(idx - delta / 15)));
+      if (ni !== idx) setIdx(ni);
+    },
+    setIdx,
+    getIdx: () => idx
+  };
+
+  dialEl.addEventListener('mousedown', e => {
+    activeDial = self; dialStartY = e.clientY;
+    document.body.style.userSelect = 'none'; e.preventDefault();
+  });
+  dialEl.addEventListener('touchstart', e => {
+    activeDial = self; dialStartY = e.touches[0].clientY; e.preventDefault();
+  }, { passive: false });
+  dialEl.addEventListener('wheel', e => {
+    e.preventDefault(); self.handleDrag(e.deltaY > 0 ? 15 : -15);
+  }, { passive: false });
+
+  applyRot(animAngle);
+  if (valueEl) valueEl.textContent = stops[idx];
+  return self;
+}
+
+const dHeroAp = makeDial('dialAperture',    'dialApertureIndicator', 'dialApertureVal',    apertureStops, 3);
+const dHeroSh = makeDial('dialShutter',     'dialShutterIndicator',  'dialShutterVal',     shutterStops,  7);
+const dHeroIS = makeDial('dialISO',         'dialISOIndicator',      'dialISOVal',         isoStops,      2);
+const dLabAp  = makeDial('labDialAperture', 'labDialApertureInd',    'labDialApertureVal', apertureStops, 3);
+const dLabSh  = makeDial('labDialShutter',  'labDialShutterInd',     'labDialShutterVal',  shutterStops,  7);
+const dLabIS  = makeDial('labDialISO',      'labDialISOInd',         'labDialISOVal',      isoStops,      2);
+const dLabFo  = makeDial('labDialFocus',    'labDialFocusInd',       'labDialFocusVal',    focusStops,    5);
+
+/* ════════════════════════════════════════
+   EXPOSURE → GLOBAL COLOR THEME ENGINE
+
+   3-phase system, symmetric around 0:
+   Negative EV: darker backgrounds, muted/cooler accents, reduced contrast
+   Zero EV    : default warm dark palette
+   Positive EV: brighter backgrounds, richer/warmer accents, lifted contrast
+
+   5 keyframe stops for smooth interpolation — but all maintain the same
+   dark-bg / light-text contract. No hue inversion ever.
+════════════════════════════════════════ */
+const EV_PALETTE = [
+  // −3 EV: Very dark — deep charcoal, muted warm tones, fully readable
+  { bg:'#080707', steelDark:'#101010', steel:'#181818',
+    cream:'#908880', creamDim:'#606058',
+    brass:'#806830', brassLight:'#a08848', blueprint:'#2a5070',
+    expLabel:'− 3 EV  ·  Underexposed', expColor:'#806830',
+    pageFilter:'brightness(0.55) saturate(0.55)' },
+
+  // −1.5 EV: Darker — muted, same hue family
+  { bg:'#0d0c0c', steelDark:'#181717', steel:'#222121',
+    cream:'#c0b8a8', creamDim:'#807870',
+    brass:'#a88848', brassLight:'#c0a060', blueprint:'#386080',
+    expLabel:'− 1.5 EV  ·  Dark', expColor:'#a88848',
+    pageFilter:'brightness(0.76) saturate(0.75)' },
+
+  //  0 EV: Default — warm dark brass and steel
+  { bg:'#111010', steelDark:'#1e1e1e', steel:'#2a2a2a',
+    cream:'#e8e0d0', creamDim:'#b0a898',
+    brass:'#c8a96e', brassLight:'#e2c88a', blueprint:'#4a7fa5',
+    expLabel:'± 0 EV  ·  Metered', expColor:'#c8a96e',
+    pageFilter:'none' },
+
+  // +1.5 EV: Brighter — brightness lifted, saturation pulled BACK to counter yellow
+  { bg:'#181614', steelDark:'#242220', steel:'#302e2c',
+    cream:'#ede6d8', creamDim:'#b8b0a0',
+    brass:'#b89860', brassLight:'#ceb478', blueprint:'#5a8fb5',
+    expLabel:'+ 1.5 EV  ·  Bright', expColor:'#b89860',
+    pageFilter:'brightness(1.18) saturate(0.78)' },
+
+  // +3 EV: Very bright — fully desaturated filter, colours stay neutral
+  { bg:'#1e1c1a', steelDark:'#2a2826', steel:'#363432',
+    cream:'#f0ead8', creamDim:'#c0b8a8',
+    brass:'#a89070', brassLight:'#c0a888', blueprint:'#6090b8',
+    expLabel:'+ 3 EV  ·  Overexposed', expColor:'#a89070',
+    pageFilter:'brightness(1.38) saturate(0.6)' }
+];
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerpHex(A, B, t) {
+  const p = h => { const c = h.replace('#',''); return [parseInt(c.slice(0,2),16),parseInt(c.slice(2,4),16),parseInt(c.slice(4,6),16)]; };
+  const x = n => n.toString(16).padStart(2,'0');
+  const [ar,ag,ab] = p(A), [br,bg_,bb] = p(B);
+  return '#'+x(Math.round(lerp(ar,br,t)))+x(Math.round(lerp(ag,bg_,t)))+x(Math.round(lerp(ab,bb,t)));
+}
+
+function getPalette(ev) {
+  const t  = (ev + 3) / 6 * 4;          // map −3..+3 → 0..4
+  const lo = Math.min(Math.floor(t), 3);
+  const hi = Math.min(lo + 1, 4);
+  const f  = t - lo;
+  const A  = EV_PALETTE[lo], B = EV_PALETTE[hi];
+  return {
+    bg:         lerpHex(A.bg,         B.bg,         f),
+    steelDark:  lerpHex(A.steelDark,  B.steelDark,  f),
+    steel:      lerpHex(A.steel,      B.steel,      f),
+    cream:      lerpHex(A.cream,      B.cream,      f),
+    creamDim:   lerpHex(A.creamDim,   B.creamDim,   f),
+    brass:      lerpHex(A.brass,      B.brass,      f),
+    brassLight: lerpHex(A.brassLight, B.brassLight, f),
+    blueprint:  lerpHex(A.blueprint,  B.blueprint,  f),
+    pageFilter: f < 0.5 ? A.pageFilter : B.pageFilter,
+    expLabel:   f < 0.5 ? A.expLabel   : B.expLabel,
+    expColor:   lerpHex(A.expColor,   B.expColor,   f),
+  };
+}
+
+const pageWrap = document.getElementById('page-wrap');
+let displayEV = 0, targetEV = 0, evRaf = null;
+
+function applyPalette(ev) {
+  const p = getPalette(ev);
+  const r = document.documentElement;
+
+  /* Update CSS custom properties — used by most elements */
+  r.style.setProperty('--black',       p.bg);
+  r.style.setProperty('--steel-dark',  p.steelDark);
+  r.style.setProperty('--steel',       p.steel);
+  r.style.setProperty('--cream',       p.cream);
+  r.style.setProperty('--cream-dim',   p.creamDim);
+  r.style.setProperty('--brass',       p.brass);
+  r.style.setProperty('--brass-light', p.brassLight);
+  r.style.setProperty('--blueprint',   p.blueprint);
+
+  /*
+    CSS custom property changes do NOT trigger element transitions.
+    Fix: explicitly set `color` and `background-color` as concrete values
+    on body and key containers so the browser can interpolate them.
+    This is what actually makes the transition visible.
+  */
+  const body = document.body;
+  body.style.backgroundColor = p.bg;
+  body.style.color           = p.cream;
+
+  /* Section backgrounds */
+  const setBg = (id, col) => { const el = document.getElementById(id); if (el) el.style.backgroundColor = col; };
+  ['about','gallery','lab','contact'].forEach(id => setBg(id, p.bg));
+
+  /* Nav */
+  const nav = document.querySelector('nav');
+  if (nav) { nav.style.borderBottomColor = p.steelDark; }
+
+  /* Footer */
+  const footer = document.querySelector('footer');
+  if (footer) { footer.style.backgroundColor = p.steelDark; footer.style.color = p.creamDim; }
+
+  /* All headings and body text — walk key text nodes */
+  document.querySelectorAll('.hero-name, .section-title, .lightbox-title').forEach(el => {
+    el.style.color = p.cream;
+  });
+  document.querySelectorAll('.hero-eyebrow, .section-label, .spec-label, .fader-label, .dial-label, .contact-info-label, .gallery-cat, .ticker-item').forEach(el => {
+    el.style.color = p.brass;
+  });
+  document.querySelectorAll('.hero-tagline, .about-body, .lab-card-text, .contact-info-value, .fader-value, .dial-value, .footer-text, .form-label').forEach(el => {
+    el.style.color = p.creamDim;
+  });
+  document.querySelectorAll('.spec-value, .gallery-title, .entry-answer, .lab-card-title').forEach(el => {
+    el.style.color = p.cream;
+  });
+  document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(el => {
+    el.style.color = p.cream;
+    el.style.backgroundColor = p.steelDark;
+  });
+
+  /* Apply filter to #page-wrap — NEVER body (which would kill the cursor) */
+  if (pageWrap) pageWrap.style.filter = (p.pageFilter === 'none') ? '' : p.pageFilter;
+
+  /* EV label */
+  const label = document.getElementById('expVal');
+  if (label) { label.textContent = p.expLabel; label.style.color = p.expColor; }
+
+  /* Fader track colour */
+  const ef = document.getElementById('exposureFader');
+  if (ef) {
+    const pct = (parseFloat(ef.value) + 3) / 6 * 100;
+    ef.style.background = `linear-gradient(90deg, ${p.expColor} 0%, ${p.expColor} ${pct}%, #2a2a2a ${pct}%, #2a2a2a 100%)`;
+  }
+}
+
+function smoothEV() {
+  const diff = targetEV - displayEV;
+  if (Math.abs(diff) < 0.005) { displayEV = targetEV; applyPalette(displayEV); evRaf = null; return; }
+  displayEV += diff * 0.08;
+  applyPalette(displayEV);
+  evRaf = requestAnimationFrame(smoothEV);
+}
+
+const exposureFader = document.getElementById('exposureFader');
+if (exposureFader) {
+  exposureFader.addEventListener('input', () => {
+    targetEV = parseFloat(exposureFader.value);
+    if (evRaf) cancelAnimationFrame(evRaf);
+    evRaf = requestAnimationFrame(smoothEV);
+  });
+  // Init track colour
+  applyPalette(0);
+}
+
+/* ════════════════════════════════════════
+   EXPOSURE CONTROL UNIT — panel buttons
+════════════════════════════════════════ */
+function savePreset() {
+  const vals = ['labDialApertureVal','labDialShutterVal','labDialISOVal','labDialFocusVal']
+    .map(id => { const el = document.getElementById(id); return el ? el.textContent : '—'; });
+  let toast = document.getElementById('presetToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'presetToast';
+    toast.style.cssText = 'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#2a2a2a,#1a1a1a);border:1px solid rgba(200,169,110,0.35);border-radius:4px;padding:0.9rem 1.6rem;z-index:1000;color:#e8e0d0;font-family:"DM Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;box-shadow:0 8px 32px rgba(0,0,0,0.6);transition:opacity 0.4s;pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span style="color:#c8a96e;letter-spacing:0.2em;text-transform:uppercase;font-size:0.58rem;">Preset Saved</span><br><span style="color:#b0a898">${vals.join(' · ')}</span>`;
+  toast.style.opacity = '1';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+}
+
+function randomizeDials() {
+  const rand = arr => Math.floor(Math.random() * arr.length);
+  if (dLabAp) dLabAp.setIdx(rand(apertureStops));
+  if (dLabSh) dLabSh.setIdx(rand(shutterStops));
+  if (dLabIS) dLabIS.setIdx(rand(isoStops));
+  if (dLabFo) dLabFo.setIdx(rand(focusStops));
+}
+
+function resetDials() {
+  if (dLabAp) dLabAp.setIdx(3);
+  if (dLabSh) dLabSh.setIdx(7);
+  if (dLabIS) dLabIS.setIdx(2);
+  if (dLabFo) dLabFo.setIdx(5);
+  if (exposureFader) { exposureFader.value = 0; targetEV = 0; displayEV = 0; applyPalette(0); }
+  if (sharpFader)    { sharpFader.value = 72; updateSharpFader(); }
+}
+
+let isLocked = false;
+function toggleLock() {
+  isLocked = !isLocked;
+  const btn = document.getElementById('lockBtn');
+  if (btn) {
+    btn.textContent = isLocked ? 'UNLOCK' : 'LOCK';
+    btn.style.background = isLocked
+      ? 'linear-gradient(180deg,#ff6060 0%,#c03030 60%,#962020 100%)' : '';
+  }
+  document.querySelectorAll('#lab .dial').forEach(d => {
+    d.style.pointerEvents = isLocked ? 'none' : '';
+    d.style.opacity       = isLocked ? '0.5'  : '';
+  });
+  document.querySelectorAll('.fader').forEach(f => {
+    f.disabled      = isLocked;
+    f.style.opacity = isLocked ? '0.45' : '';
+  });
+  ['randomizeBtn','resetBtn','savePresetBtn'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.disabled = isLocked; el.style.opacity = isLocked ? '0.45' : ''; }
+  });
+}
+
+const rBtn  = document.getElementById('randomizeBtn');
+const resBtn = document.getElementById('resetBtn');
+const spBtn  = document.getElementById('savePresetBtn');
+const lkBtn  = document.getElementById('lockBtn');
+if (rBtn)   rBtn.addEventListener('click', randomizeDials);
+if (resBtn) resBtn.addEventListener('click', resetDials);
+if (spBtn)  spBtn.addEventListener('click', savePreset);
+if (lkBtn)  lkBtn.addEventListener('click', toggleLock);
+
+/* ════════════════════════════════════════
+   NAV SCROLL
+════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (nav) nav.style.background = window.scrollY > 50
+    ? 'rgba(17,16,16,0.99)'
+    : 'linear-gradient(180deg,rgba(17,16,16,0.98) 0%,rgba(17,16,16,0.88) 100%)';
+});
+
+})(); // end IIFE
+</script>
+</div><!-- /page-wrap -->
+
+</body>
 </html>
